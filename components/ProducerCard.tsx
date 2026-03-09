@@ -16,14 +16,14 @@ export default function ProducerCard({
   const indexLabel = String(index).padStart(2, "0");
 
   return (
-    <article className="group border-t border-neutral-200 hover:border-black transition-colors duration-200 pt-7 pb-8 pr-8">
-      <span className="block text-[10px] tracking-[0.3em] text-neutral-300 mb-5">
+    <article className="group border-t border-neutral-200 hover:border-black transition-colors duration-200 pt-8 pb-10">
+      <span className="block text-[10px] tracking-[0.3em] text-neutral-300 mb-6">
         {indexLabel}
       </span>
-      <h3 className="text-2xl md:text-3xl font-light tracking-tight text-black group-hover:opacity-60 transition-opacity duration-200">
+      <h3 className="text-[1.875rem] md:text-[2.5rem] font-light leading-[1.05] tracking-tight text-black group-hover:opacity-60 transition-opacity duration-200">
         {name}
       </h3>
-      <p className="mt-2.5 text-xs text-neutral-500 leading-relaxed max-w-xs">
+      <p className="mt-3 text-xs text-neutral-500 leading-relaxed max-w-xs">
         {descriptor}
       </p>
       <Link

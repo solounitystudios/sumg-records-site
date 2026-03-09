@@ -55,7 +55,7 @@ export default function ArtistsPage() {
           <p className="text-[10px] tracking-[0.45em] uppercase text-neutral-600 mb-6">
             SUMG Records
           </p>
-          <h1 className="font-display italic font-normal text-white text-4xl md:text-6xl leading-none tracking-tight">
+          <h1 className="font-display italic font-normal text-white text-[2.5rem] md:text-[4.5rem] leading-[0.92] tracking-[-0.01em]">
             Artists
           </h1>
           <div className="mt-7 w-10 border-t border-neutral-700" />
@@ -69,7 +69,7 @@ export default function ArtistsPage() {
       <section className="bg-[#fafaf8] py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <SectionHeading eyebrow="Roster" title={`${artists.length} Artists`} />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12 md:gap-x-8 md:gap-y-16">
             {artists.map((artist) => (
               <ArtistCard
                 key={artist.name}

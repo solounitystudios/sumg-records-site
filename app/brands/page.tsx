@@ -43,7 +43,7 @@ export default function BrandsPage() {
           <p className="text-[10px] tracking-[0.45em] uppercase text-neutral-600 mb-6">
             SUMG Records
           </p>
-          <h1 className="font-display italic font-normal text-white text-4xl md:text-6xl leading-none tracking-tight">
+          <h1 className="font-display italic font-normal text-white text-[2.5rem] md:text-[4.5rem] leading-[0.92] tracking-[-0.01em]">
             Brands
           </h1>
           <div className="mt-7 w-10 border-t border-neutral-700" />

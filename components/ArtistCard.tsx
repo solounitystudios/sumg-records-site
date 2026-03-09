@@ -14,12 +14,12 @@ export default function ArtistCard({
   return (
     <article className="group flex flex-col">
       {/* Portrait image block — 4:5 ratio */}
-      <div className="relative aspect-[4/5] bg-neutral-100 overflow-hidden">
+      <div className="relative aspect-[4/5] bg-neutral-200 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
       </div>
 
       {/* Info block */}
-      <div className="pt-4 pb-6 flex flex-col gap-2.5 border-b border-neutral-200 group-hover:border-black transition-colors duration-200">
+      <div className="pt-5 pb-7 flex flex-col gap-3 border-b border-neutral-200 group-hover:border-black transition-colors duration-200">
         <h3 className="text-[11px] tracking-[0.22em] uppercase font-medium text-black">
           {name}
         </h3>

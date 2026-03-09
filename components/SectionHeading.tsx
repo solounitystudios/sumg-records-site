@@ -32,7 +32,7 @@ export default function SectionHeading({
               {eyebrow}
             </p>
           )}
-          <h2 className="text-3xl md:text-4xl font-light tracking-tight text-black leading-tight">
+          <h2 className="text-3xl md:text-4xl font-light tracking-tight text-black leading-[1.08]">
             {title}
           </h2>
         </div>

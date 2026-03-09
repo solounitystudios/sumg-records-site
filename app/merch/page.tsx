@@ -48,7 +48,7 @@ export default function MerchPage() {
           <p className="text-[10px] tracking-[0.45em] uppercase text-neutral-600 mb-6">
             Collaboration
           </p>
-          <h1 className="font-display italic font-normal text-white text-4xl md:text-6xl leading-none tracking-tight">
+          <h1 className="font-display italic font-normal text-white text-[2.5rem] md:text-[4.5rem] leading-[0.92] tracking-[-0.01em]">
             SUMG × PersonaWorks
           </h1>
           <div className="mt-7 w-10 border-t border-neutral-700" />
@@ -72,10 +72,10 @@ export default function MerchPage() {
             {products.map((product) => (
               <article key={product.name} className="group flex flex-col">
                 {/* Product image placeholder — portrait */}
-                <div className="relative aspect-[3/4] bg-neutral-100 overflow-hidden">
-                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
+                <div className="relative aspect-[3/4] bg-neutral-200 overflow-hidden">
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
                 </div>
-                <div className="pt-4 pb-6 border-b border-neutral-200 group-hover:border-black transition-colors duration-200 flex flex-col gap-2">
+                <div className="pt-5 pb-7 border-b border-neutral-200 group-hover:border-black transition-colors duration-200 flex flex-col gap-3">
                   <h3 className="text-[11px] tracking-[0.22em] uppercase font-medium text-black">
                     {product.name}
                   </h3>

@@ -90,7 +90,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="bg-[#111] text-white min-h-[88vh] flex flex-col justify-center items-center text-center px-6 py-28">
+      <section className="bg-[#111] text-white min-h-[85svh] flex flex-col justify-center items-center text-center px-6 py-28">
         <p className="text-[10px] tracking-[0.5em] uppercase text-neutral-600 mb-10">
           Est. — Solounity Music Group
         </p>
@@ -130,7 +130,7 @@ export default function HomePage() {
             linkHref="/artists"
             linkLabel="All Artists"
           />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-x-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-12 md:gap-x-8 md:gap-y-16">
             {featuredArtists.map((artist) => (
               <ArtistCard
                 key={artist.name}

@@ -10,7 +10,7 @@ export default function BrandCard({
   href = "#",
 }: BrandCardProps) {
   return (
-    <article className="group border-t border-neutral-200 hover:border-black transition-colors duration-200 pt-6 pb-8 pr-8 flex flex-col gap-3">
+    <article className="group border-t border-neutral-200 hover:border-black transition-colors duration-200 pt-7 pb-9 flex flex-col gap-3">
       <h3 className="text-[11px] tracking-[0.25em] uppercase font-medium text-black">
         {name}
       </h3>

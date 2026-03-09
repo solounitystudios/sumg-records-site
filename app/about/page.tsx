@@ -42,7 +42,7 @@ export default function AboutPage() {
           <p className="text-[10px] tracking-[0.45em] uppercase text-neutral-600 mb-6">
             SUMG Records
           </p>
-          <h1 className="font-display italic font-normal text-white text-4xl md:text-6xl leading-none tracking-tight">
+          <h1 className="font-display italic font-normal text-white text-[2.5rem] md:text-[4.5rem] leading-[0.92] tracking-[-0.01em]">
             About
           </h1>
           <div className="mt-7 w-10 border-t border-neutral-700" />
@@ -94,14 +94,16 @@ export default function AboutPage() {
 
       {/* Closing callout */}
       <section className="bg-[#111] text-white py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 max-w-3xl">
-          <p className="text-[10px] tracking-[0.4em] uppercase text-neutral-600 mb-6">
-            SUMG Records
-          </p>
-          <p className="text-2xl md:text-3xl font-display italic font-normal text-white leading-snug">
-            Solounity Music Group — independent by choice, built for the long
-            game.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="max-w-2xl">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-neutral-600 mb-6">
+              SUMG Records
+            </p>
+            <p className="text-[1.75rem] md:text-[2.5rem] font-display italic font-normal text-white leading-[1.1] tracking-[-0.01em]">
+              Solounity Music Group — independent by choice, built for the long
+              game.
+            </p>
+          </div>
         </div>
       </section>
     </>
