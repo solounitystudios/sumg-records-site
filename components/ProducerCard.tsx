@@ -3,33 +3,35 @@ import Link from "next/link";
 interface ProducerCardProps {
   name: string;
   descriptor: string;
+  index: number;
   href?: string;
 }
 
 export default function ProducerCard({
   name,
   descriptor,
+  index,
   href = "#",
 }: ProducerCardProps) {
-  return (
-    <article className="group flex flex-col border border-neutral-200 hover:border-black transition-colors duration-200">
-      {/* Placeholder image block */}
-      <div className="aspect-square bg-neutral-100 w-full" aria-hidden="true" />
+  const indexLabel = String(index).padStart(2, "0");
 
-      <div className="p-5 flex flex-col gap-3 flex-1">
-        <h3 className="text-sm font-semibold tracking-widest uppercase text-black">
-          {name}
-        </h3>
-        <p className="text-xs text-neutral-500 leading-relaxed flex-1">
-          {descriptor}
-        </p>
-        <Link
-          href={href}
-          className="inline-block text-xs font-medium tracking-widest uppercase border border-black px-4 py-2 text-black hover:bg-black hover:text-white transition-colors duration-200 self-start"
-        >
-          View Producer
-        </Link>
-      </div>
+  return (
+    <article className="group border-t border-neutral-200 hover:border-black transition-colors duration-200 pt-7 pb-8 pr-8">
+      <span className="block text-[10px] tracking-[0.3em] text-neutral-300 mb-5">
+        {indexLabel}
+      </span>
+      <h3 className="text-2xl md:text-3xl font-light tracking-tight text-black group-hover:opacity-60 transition-opacity duration-200">
+        {name}
+      </h3>
+      <p className="mt-2.5 text-xs text-neutral-500 leading-relaxed max-w-xs">
+        {descriptor}
+      </p>
+      <Link
+        href={href}
+        className="mt-5 inline-flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase text-neutral-400 hover:text-black transition-colors duration-200"
+      >
+        View Producer <span aria-hidden="true">→</span>
+      </Link>
     </article>
   );
 }

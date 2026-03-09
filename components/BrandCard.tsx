@@ -10,20 +10,20 @@ export default function BrandCard({
   href = "#",
 }: BrandCardProps) {
   return (
-    <article className="flex flex-col border border-neutral-200 hover:border-black transition-colors duration-200 p-6 gap-4">
-      <h3 className="text-sm font-semibold tracking-widest uppercase text-black">
+    <article className="group border-t border-neutral-200 hover:border-black transition-colors duration-200 pt-6 pb-8 pr-8 flex flex-col gap-3">
+      <h3 className="text-[11px] tracking-[0.25em] uppercase font-medium text-black">
         {name}
       </h3>
-      <p className="text-xs text-neutral-500 leading-relaxed flex-1">
+      <p className="text-xs text-neutral-500 leading-relaxed max-w-xs">
         {description}
       </p>
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block text-xs font-medium tracking-widest uppercase border border-black px-4 py-2 text-black hover:bg-black hover:text-white transition-colors duration-200 self-start"
+        className="mt-1 inline-flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase text-neutral-400 group-hover:text-black transition-colors duration-200"
       >
-        Visit Store
+        Visit Store <span aria-hidden="true">→</span>
       </a>
     </article>
   );

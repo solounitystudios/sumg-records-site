@@ -9,33 +9,38 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  return (
-    <footer className="w-full border-t border-neutral-200 bg-white mt-24">
-      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div>
-          <p className="text-sm font-semibold tracking-widest uppercase text-black">
-            SUMG Records
-          </p>
-          <p className="text-xs text-neutral-400 mt-1">
-            Solounity Music Group
-          </p>
-        </div>
+  const year = new Date().getFullYear();
 
-        <ul className="flex flex-wrap gap-6">
-          {footerLinks.map((link) => (
-            <li key={link.href}>
+  return (
+    <footer className="bg-[#111] text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-16 pb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 pb-10 border-b border-neutral-800">
+          {/* Brand */}
+          <div>
+            <p className="text-[11px] tracking-[0.28em] uppercase font-medium text-white">
+              SUMG Records
+            </p>
+            <p className="text-[10px] tracking-[0.22em] uppercase text-neutral-600 mt-1.5">
+              Solounity Music Group
+            </p>
+          </div>
+
+          {/* Nav */}
+          <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-8 gap-y-3">
+            {footerLinks.map((link) => (
               <Link
+                key={link.href}
                 href={link.href}
-                className="text-xs font-medium tracking-widest uppercase text-neutral-500 hover:text-black transition-colors duration-150"
+                className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 hover:text-white transition-colors duration-200"
               >
                 {link.label}
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </nav>
+        </div>
 
-        <p className="text-xs text-neutral-400">
-          &copy; {new Date().getFullYear()} SUMG Records. All rights reserved.
+        <p className="text-[10px] text-neutral-700 tracking-wider mt-6">
+          &copy; {year} SUMG Records. All rights reserved.
         </p>
       </div>
     </footer>

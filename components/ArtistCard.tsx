@@ -12,22 +12,23 @@ export default function ArtistCard({
   href = "#",
 }: ArtistCardProps) {
   return (
-    <article className="group flex flex-col border border-neutral-200 hover:border-black transition-colors duration-200">
-      {/* Placeholder image block */}
-      <div className="aspect-square bg-neutral-100 w-full" aria-hidden="true" />
+    <article className="group flex flex-col">
+      {/* Portrait image block — 4:5 ratio */}
+      <div className="relative aspect-[4/5] bg-neutral-100 overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+      </div>
 
-      <div className="p-5 flex flex-col gap-3 flex-1">
-        <h3 className="text-sm font-semibold tracking-widest uppercase text-black">
+      {/* Info block */}
+      <div className="pt-4 pb-6 flex flex-col gap-2.5 border-b border-neutral-200 group-hover:border-black transition-colors duration-200">
+        <h3 className="text-[11px] tracking-[0.22em] uppercase font-medium text-black">
           {name}
         </h3>
-        <p className="text-xs text-neutral-500 leading-relaxed flex-1">
-          {descriptor}
-        </p>
+        <p className="text-xs text-neutral-500 leading-relaxed">{descriptor}</p>
         <Link
           href={href}
-          className="inline-block text-xs font-medium tracking-widest uppercase border border-black px-4 py-2 text-black hover:bg-black hover:text-white transition-colors duration-200 self-start"
+          className="mt-0.5 inline-flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase text-neutral-400 hover:text-black transition-colors duration-200"
         >
-          View Artist
+          View Artist <span aria-hidden="true">→</span>
         </Link>
       </div>
     </article>

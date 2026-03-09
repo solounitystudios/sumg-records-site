@@ -12,60 +12,76 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-neutral-200 bg-white sticky top-0 z-50">
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-sm font-semibold tracking-widest uppercase text-black"
-        >
-          SUMG Records
+    <header className="sticky top-0 z-50 bg-[#fafaf8] border-b border-neutral-200">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+        {/* Wordmark */}
+        <Link href="/" className="group flex flex-col leading-none">
+          <span className="text-[11px] tracking-[0.28em] uppercase font-medium text-black group-hover:opacity-60 transition-opacity duration-200">
+            SUMG
+          </span>
+          <span className="text-[9px] tracking-[0.28em] uppercase text-neutral-400 group-hover:opacity-60 transition-opacity duration-200">
+            Records
+          </span>
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex gap-8">
+        {/* Desktop links */}
+        <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-[11px] tracking-[0.2em] uppercase text-neutral-400 hover:text-black transition-colors duration-200"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex flex-col gap-[5px] p-1 -mr-1"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span
+            className={`block h-px w-5 bg-black transition-transform duration-200 origin-center ${
+              open ? "translate-y-[7px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-px w-5 bg-black transition-opacity duration-200 ${
+              open ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block h-px w-5 bg-black transition-transform duration-200 origin-center ${
+              open ? "-translate-y-[7px] -rotate-45" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-neutral-200 bg-[#fafaf8]">
+          <nav
+            aria-label="Mobile navigation"
+            className="max-w-7xl mx-auto px-6 py-7 flex flex-col gap-5"
+          >
+            {navLinks.map((link) => (
               <Link
+                key={link.href}
                 href={link.href}
-                className="text-xs font-medium tracking-widest uppercase text-neutral-500 hover:text-black transition-colors duration-150"
+                onClick={() => setOpen(false)}
+                className="text-[11px] tracking-[0.2em] uppercase text-neutral-500 hover:text-black transition-colors duration-200"
               >
                 {link.label}
               </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden text-black focus:outline-none"
-          aria-label="Toggle menu"
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          <span className="block w-5 h-px bg-black mb-1" />
-          <span className="block w-5 h-px bg-black mb-1" />
-          <span className="block w-5 h-px bg-black" />
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-neutral-200 bg-white px-6 pb-4">
-          <ul className="flex flex-col gap-4 pt-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-xs font-medium tracking-widest uppercase text-neutral-600 hover:text-black transition-colors duration-150"
-                >
-                  {link.label}
-                </Link>
-              </li>
             ))}
-          </ul>
+          </nav>
         </div>
       )}
     </header>
