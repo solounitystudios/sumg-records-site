@@ -15,12 +15,22 @@ html {
 }
 
 body {
-  background-color: #fafaf8;
+  background-color: #f4f4f1;
   color: #111111;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+main {
+  min-height: 70vh;
+}
+
+a,
+button {
+  transition-property: color, background-color, border-color, opacity, transform;
+  transition-timing-function: ease;
 }
 
 ::selection {
