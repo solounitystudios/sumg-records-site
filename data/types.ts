@@ -13,6 +13,7 @@ export interface SocialLinks {
 
 export interface StreamingLinks {
   spotify?: string;
+  apple?: string;
   appleMusic?: string;
   soundcloud?: string;
   bandcamp?: string;

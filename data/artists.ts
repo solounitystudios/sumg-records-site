@@ -13,10 +13,17 @@ export const artists: Artist[] = [
     location: "Los Angeles, CA",
     featuredReleaseSlug: "glass-hour",
     socials: {
+      facebook: "https://www.facebook.com/Zysonmusic?",
       instagram:
         "https://www.instagram.com/zysonmusic?igsh=NnN0bXA0ZzhjZnhn&utm_source=qr",
+      tiktok: "https://www.tiktok.com/@zysonmusic?_r=1&_t=ZP-94Zhwalff1L",
+      youtube: "https://youtube.com/@ZysonWorld",
     },
-    streaming: {},
+    streaming: {
+      spotify:
+        "https://open.spotify.com/artist/7EYhgV16nWMakkdC0yyJ4I?si=Kay0HVAsQbiJUMZ1k5j7Aw",
+      apple: "https://music.apple.com/us/artist/zyson/1851929052",
+    },
   },
   {
     name: "Jayno",
@@ -51,8 +58,11 @@ export const artists: Artist[] = [
       facebook: "https://www.facebook.com/profile.php?id=61552485496591",
       instagram:
         "https://www.instagram.com/lysandra_noir?igsh=MXM0bmVzY2RlaXBmeQ%3D%3D&utm_source=qr",
+      youtube: "https://youtube.com/@LysandraNoir",
     },
-    streaming: {},
+    streaming: {
+      apple: "https://music.apple.com/us/artist/lysandra-noir/1878581682",
+    },
   },
   {
     name: "Marrick",
@@ -67,8 +77,14 @@ export const artists: Artist[] = [
     featuredReleaseSlug: "southline",
     socials: {
       facebook: "https://www.facebook.com/profile.php?id=61588519263961",
+      youtube:
+        "https://youtube.com/channel/UCJlP66UHNFxUDuX-5vm5kfw?si=4YxKSC_VoJL65Ion",
     },
-    streaming: {},
+    streaming: {
+      apple: "https://music.apple.com/us/artist/mar-rick/1878568831",
+      spotify:
+        "https://open.spotify.com/artist/4A65fhK41XMNhSAIjCzExs?si=_KHSF70ESjqkX8F0oJ6euw",
+    },
   },
   {
     name: "Sorin",
@@ -83,10 +99,11 @@ export const artists: Artist[] = [
     featuredReleaseSlug: "paper-rooms",
     socials: {
       facebook: "https://www.facebook.com/profile.php?id=100093674563775",
+      youtube: "https://youtube.com/@sorinafterdark?si=WuocCdvkGQVL5rf7",
     },
     streaming: {
       spotify:
-        "https://open.spotify.com/artist/7zMSTt81tfp8KK9MZTCeSP?si=YYZ4Ya_kTAiRis0QTrT-lw",
+        "https://open.spotify.com/artist/7zMSTt81tfp8KK9MZTCeSP?si=Sx0EQ9WFSv6haL8P--gttw",
     },
   },
   {

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import LinkCluster from "@/components/LinkCluster";
 import MediaTile from "@/components/MediaTile";
 import PageIntro from "@/components/PageIntro";
 import ReleaseCard from "@/components/ReleaseCard";
@@ -12,6 +11,13 @@ import { toSpotifyArtistEmbedUrl } from "@/lib/spotify";
 interface ArtistPageProps {
   params: Promise<{ slug: string }>;
 }
+
+const followPlatformOrder = [
+  ["facebook", "Facebook"],
+  ["instagram", "Instagram"],
+  ["tiktok", "TikTok"],
+  ["youtube", "YouTube"],
+] as const;
 
 export async function generateStaticParams() {
   return artists.map((artist) => ({ slug: artist.slug }));
@@ -41,12 +47,21 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
   const featuredRelease = releases.find(
     (release) => release.slug === artist.featuredReleaseSlug,
   );
-  const socialEntries = Object.values(artist.socials).filter(Boolean);
-  const streamingEntries = Object.values(artist.streaming).filter(
-    (value) => Boolean(value && value !== "#"),
-  );
-  const hasLinkClusters = socialEntries.length > 0 || streamingEntries.length > 0;
-  const spotifyUrl = artist.streaming.spotify;
+  const spotifyUrl =
+    artist.streaming.spotify && artist.streaming.spotify !== "#"
+      ? artist.streaming.spotify
+      : undefined;
+  const appleUrl =
+    (artist.streaming.apple && artist.streaming.apple !== "#"
+      ? artist.streaming.apple
+      : undefined) ??
+    (artist.streaming.appleMusic && artist.streaming.appleMusic !== "#"
+      ? artist.streaming.appleMusic
+      : undefined);
+  const followLinks = followPlatformOrder
+    .map(([key, label]) => ({ label, href: artist.socials[key] }))
+    .filter((entry) => Boolean(entry.href && entry.href !== "#"));
+  const hasListenSection = Boolean(spotifyUrl || appleUrl);
   const spotifyEmbedUrl = toSpotifyArtistEmbedUrl(spotifyUrl);
 
   return (
@@ -76,22 +91,55 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
             )}
             <p className="mt-6 text-base text-neutral-700 leading-relaxed">{artist.fullBio}</p>
 
-            {hasLinkClusters && (
-              <div className="mt-10 grid sm:grid-cols-2 gap-6">
-                <LinkCluster title="Social" links={artist.socials} />
-                <LinkCluster title="Streaming" links={artist.streaming} />
+            {hasListenSection && (
+              <div className="mt-10 border-t border-neutral-800/15 pt-6">
+                <p className="text-[10px] uppercase tracking-[0.26em] text-neutral-400 mb-4">
+                  Listen
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {spotifyUrl && (
+                    <a
+                      href={spotifyUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-5 py-3 hover:border-neutral-900 transition-colors duration-200"
+                    >
+                      Listen on Spotify
+                    </a>
+                  )}
+                  {appleUrl && (
+                    <a
+                      href={appleUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-5 py-3 hover:border-neutral-900 transition-colors duration-200"
+                    >
+                      Listen on Apple Music
+                    </a>
+                  )}
+                </div>
               </div>
             )}
 
-            {spotifyUrl && (
-              <a
-                href={spotifyUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-8 inline-flex items-center text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-5 py-3 hover:border-neutral-900 transition-colors duration-200"
-              >
-                Listen on Spotify
-              </a>
+            {followLinks.length > 0 && (
+              <div className="mt-8 border-t border-neutral-800/15 pt-6">
+                <p className="text-[10px] uppercase tracking-[0.26em] text-neutral-400 mb-4">
+                  Follow
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {followLinks.map((entry) => (
+                    <a
+                      key={entry.label}
+                      href={entry.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-4 py-2.5 hover:border-neutral-900 transition-colors duration-200"
+                    >
+                      {entry.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             )}
           </div>
         </div>
