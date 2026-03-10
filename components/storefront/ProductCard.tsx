@@ -27,6 +27,7 @@ export default function ProductCard({
           label={product.name}
           className="aspect-[3/4]"
           sizes="(max-width: 1024px) 50vw, 24vw"
+          fallbackVariant="restrained"
         />
         <p
           className="mt-4 text-[10px] uppercase tracking-[0.23em]"
@@ -37,9 +38,6 @@ export default function ProductCard({
         <h3 className="mt-2 text-lg tracking-tight" style={{ color: textColor }}>
           {product.name}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed" style={{ color: mutedTextColor }}>
-          {product.description}
-        </p>
         <p className="mt-4 text-[11px] uppercase tracking-[0.2em]" style={{ color: textColor }}>
           {product.compareAtPrice && product.compareAtPrice > product.price && (
             <span className="line-through mr-2 opacity-60">

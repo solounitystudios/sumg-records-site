@@ -72,9 +72,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <>
       <section
         style={{ backgroundColor: brand.theme.surface }}
-        className={`py-16 md:py-24 ${bodyClass(brand.theme.bodyTreatment)}`}
+        className={`py-14 md:py-20 ${bodyClass(brand.theme.bodyTreatment)}`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
           <Link
             href={`/merch/${brand.slug}`}
             className="text-[10px] uppercase tracking-[0.22em]"
@@ -83,15 +83,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
             ← Back to {brand.name}
           </Link>
 
-          <div className="mt-8 grid lg:grid-cols-[1fr_0.9fr] gap-10">
-            <MediaTile
-              src={product.images[0]}
-              alt={product.name}
-              label={product.name}
-              className="aspect-[4/5]"
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              priority
-            />
+          <div className="mt-8 grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] gap-8 lg:gap-12 items-start">
+            <div className="w-full max-w-[520px]">
+              <MediaTile
+                src={product.images[0]}
+                alt={product.name}
+                label={product.name}
+                className="aspect-[4/4.9] border border-neutral-800/10"
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                priority
+                fallbackVariant="restrained"
+              />
+            </div>
             <div>
               <p
                 className="text-[10px] uppercase tracking-[0.24em]"
@@ -160,7 +163,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       {relatedProducts.length > 0 && (
-        <section style={{ backgroundColor: brand.theme.background }} className="py-20 md:py-24 border-t">
+        <section style={{ backgroundColor: brand.theme.background }} className="py-16 md:py-20 border-t">
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[10px] uppercase tracking-[0.24em]" style={{ color: brand.theme.mutedText }}>
               More from {brand.name}

@@ -7,9 +7,9 @@ export default function MerchPage() {
 
   return (
     <>
-      <section className="bg-[#101113] text-white py-24 md:py-32 border-b border-black">
+      <section className="bg-[#101113] text-white py-20 md:py-24 border-b border-black">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="text-[10px] uppercase tracking-[0.34em] text-neutral-500">Fashion commerce</p>
+          <p className="text-[10px] uppercase tracking-[0.34em] text-neutral-500">Fashion storefronts</p>
           <h1 className="mt-6 text-[clamp(2.4rem,6vw,4.8rem)] font-light tracking-tight leading-[0.93] max-w-4xl">
             Enter each brand&apos;s storefront.
           </h1>
@@ -20,7 +20,7 @@ export default function MerchPage() {
         </div>
       </section>
 
-      <section className="bg-[#f7f7f5] py-24 md:py-32">
+      <section className="bg-[#f7f7f5] py-20 md:py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-8">
           {brands.map((brand) => {
             const productCount = getStorefrontProductsByBrand(brand.slug).length;
@@ -38,6 +38,7 @@ export default function MerchPage() {
                     label={brand.name}
                     className="aspect-[4/3]"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    fallbackVariant="restrained"
                   />
                   <div
                     className="absolute inset-0"

@@ -96,6 +96,7 @@ export default async function StorefrontBrandPage({ params }: StorefrontPageProp
             className="h-full"
             sizes="100vw"
             priority
+            fallbackVariant="restrained"
           />
           <div className="absolute inset-0" style={{ background: brand.theme.heroOverlay }} />
         </div>
@@ -121,10 +122,10 @@ export default async function StorefrontBrandPage({ params }: StorefrontPageProp
             {brand.fullDescription}
           </p>
           <p className="mt-5 max-w-3xl text-xs uppercase tracking-[0.22em]" style={{ color: brand.theme.accent }}>
-            {brand.positioning} · {brand.productMood}
+            {brand.positioning}
           </p>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed" style={{ color: brand.theme.mutedText }}>
-            {brand.visualDirection}
+          <p className="mt-2 max-w-3xl text-xs uppercase tracking-[0.2em]" style={{ color: brand.theme.mutedText }}>
+            {brand.campaignTone}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {brand.collections.map((collection) => (
@@ -140,7 +141,7 @@ export default async function StorefrontBrandPage({ params }: StorefrontPageProp
         </div>
       </section>
 
-      <section style={{ backgroundColor: brand.theme.surface }} className="py-20 md:py-28">
+      <section style={{ backgroundColor: brand.theme.surface }} className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex items-end justify-between gap-6">
             <div>
@@ -162,14 +163,13 @@ export default async function StorefrontBrandPage({ params }: StorefrontPageProp
 
           <div className="mt-8 flex flex-wrap gap-2">
             {categories.map((category) => (
-              <a
+              <span
                 key={category}
-                href={`#category-${category}`}
                 className="border px-3 py-2 text-[10px] uppercase tracking-[0.2em]"
                 style={{ borderColor: brand.theme.border, color: brand.theme.mutedText }}
               >
                 {category}
-              </a>
+              </span>
             ))}
           </div>
 
@@ -193,33 +193,6 @@ export default async function StorefrontBrandPage({ params }: StorefrontPageProp
                   {collectionProducts.map((product) => (
                     <ProductCard
                       key={product.slug}
-                      product={product}
-                      href={`/merch/${brand.slug}/products/${product.slug}`}
-                      textColor={brand.theme.text}
-                      mutedTextColor={brand.theme.mutedText}
-                      borderColor={brand.theme.border}
-                    />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-
-          {categories.map((category) => {
-            const categoryProducts = products.filter((product) => product.category === category);
-            if (categoryProducts.length === 0) {
-              return null;
-            }
-
-            return (
-              <div key={category} id={`category-${category}`} className="mt-16">
-                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: brand.theme.accent }}>
-                  Category · {category}
-                </p>
-                <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {categoryProducts.slice(0, 3).map((product) => (
-                    <ProductCard
-                      key={`${category}-${product.slug}`}
                       product={product}
                       href={`/merch/${brand.slug}/products/${product.slug}`}
                       textColor={brand.theme.text}

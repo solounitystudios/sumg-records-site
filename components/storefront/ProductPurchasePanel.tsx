@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { StorefrontProduct } from "@/data/types";
 import { formatCurrency } from "@/lib/commerce";
@@ -18,7 +19,7 @@ export default function ProductPurchasePanel({
   borderColor,
   mutedTextColor,
 }: ProductPurchasePanelProps) {
-  const { addItem } = useStorefrontCart();
+  const { addItem, openCart } = useStorefrontCart();
   const [selectedColor, setSelectedColor] = useState(product.colors[0] ?? "");
   const [selectedSize, setSelectedSize] = useState(product.sizes[0] ?? "");
   const [quantity, setQuantity] = useState(1);
@@ -39,6 +40,7 @@ export default function ProductPurchasePanel({
       quantity,
     });
     setAddedMessage("Added to cart.");
+    openCart();
   };
 
   return (
@@ -132,13 +134,13 @@ export default function ProductPurchasePanel({
         </p>
       )}
 
-      <button
-        type="button"
-        className="w-full px-6 py-4 text-[11px] uppercase tracking-[0.22em] border"
+      <Link
+        href="/merch/cart"
+        className="w-full inline-flex justify-center px-6 py-4 text-[11px] uppercase tracking-[0.22em] border"
         style={{ borderColor, color: mutedTextColor }}
       >
-        Checkout (soon)
-      </button>
+        View cart
+      </Link>
     </div>
   );
 }

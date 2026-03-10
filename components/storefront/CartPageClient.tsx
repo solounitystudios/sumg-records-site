@@ -43,8 +43,8 @@ export default function CartPageClient() {
 
   if (lines.length === 0) {
     return (
-      <section className="bg-[#f7f7f5] py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-6 md:px-10 text-center border border-neutral-800/15 py-16 bg-white">
+      <section className="bg-[#f7f7f5] py-16 md:py-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-10 text-center border border-neutral-800/15 py-12 bg-white">
           <p className="text-[10px] uppercase tracking-[0.26em] text-neutral-400">Cart</p>
           <h1 className="mt-4 text-3xl font-light tracking-tight text-neutral-900">
             Your cart is empty.
@@ -64,7 +64,7 @@ export default function CartPageClient() {
   }
 
   return (
-    <section className="bg-[#f7f7f5] py-24 md:py-32">
+    <section className="bg-[#f7f7f5] py-16 md:py-20">
       <div className="max-w-6xl mx-auto px-6 md:px-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-10">
         <div>
           <p className="text-[10px] uppercase tracking-[0.26em] text-neutral-400">Cart</p>
@@ -124,9 +124,7 @@ export default function CartPageClient() {
           >
             {isCheckoutLoading ? "Preparing checkout..." : "Proceed to checkout"}
           </button>
-          <p className="mt-3 text-xs text-neutral-500">
-            Shopify checkout handoff is available when Storefront API credentials are configured.
-          </p>
+          <p className="mt-3 text-xs text-neutral-500">Secure checkout opens in a new step.</p>
           {checkoutMessage && <p className="mt-2 text-xs text-neutral-600">{checkoutMessage}</p>}
         </aside>
       </div>
