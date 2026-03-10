@@ -1,5 +1,7 @@
 import PageIntro from "@/components/PageIntro";
 import NewsletterBlock from "@/components/NewsletterBlock";
+import { labelProfile } from "@/data";
+import { toDisplayLabel } from "@/lib/text";
 
 const contacts = [
   { label: "General", email: "hello@sumgrecords.com" },
@@ -31,6 +33,22 @@ export default function ContactPage() {
               </a>
             </article>
           ))}
+        </div>
+        <div className="max-w-5xl mx-auto px-6 md:px-10 mt-14 border-t border-neutral-800/20 pt-6">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-400">Follow SUMG</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {Object.entries(labelProfile.socials).map(([platform, href]) => (
+              <a
+                key={platform}
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-[11px] uppercase tracking-[0.2em] border border-neutral-800/20 px-3 py-2 hover:border-neutral-900 transition-colors"
+              >
+                {toDisplayLabel(platform)}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
       <NewsletterBlock />

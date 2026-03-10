@@ -13,15 +13,10 @@ export const artists: Artist[] = [
     location: "Los Angeles, CA",
     featuredReleaseSlug: "glass-hour",
     socials: {
-      instagram: "#",
-      x: "#",
-      youtube: "#",
+      instagram:
+        "https://www.instagram.com/zysonmusic?igsh=NnN0bXA0ZzhjZnhn&utm_source=qr",
     },
-    streaming: {
-      spotify: "#",
-      appleMusic: "#",
-      soundcloud: "#",
-    },
+    streaming: {},
   },
   {
     name: "Jayno",
@@ -35,15 +30,11 @@ export const artists: Artist[] = [
     location: "Brooklyn, NY",
     featuredReleaseSlug: "afterline",
     socials: {
-      instagram: "#",
-      tiktok: "#",
-      youtube: "#",
+      facebook: "https://www.facebook.com/profile.php?id=100080194834019",
+      instagram:
+        "https://www.instagram.com/jayno.wav?igsh=MXRzcm5mdzNwYXJkeg%3D%3D&utm_source=qr",
     },
-    streaming: {
-      spotify: "#",
-      appleMusic: "#",
-      bandcamp: "#",
-    },
+    streaming: {},
   },
   {
     name: "Lysandra Noir",
@@ -57,15 +48,11 @@ export const artists: Artist[] = [
     location: "London, UK",
     featuredReleaseSlug: "double-bind",
     socials: {
-      instagram: "#",
-      x: "#",
-      tiktok: "#",
+      facebook: "https://www.facebook.com/profile.php?id=61552485496591",
+      instagram:
+        "https://www.instagram.com/lysandra_noir?igsh=MXM0bmVzY2RlaXBmeQ%3D%3D&utm_source=qr",
     },
-    streaming: {
-      spotify: "#",
-      appleMusic: "#",
-      soundcloud: "#",
-    },
+    streaming: {},
   },
   {
     name: "Marrick",
@@ -79,14 +66,9 @@ export const artists: Artist[] = [
     location: "Chicago, IL",
     featuredReleaseSlug: "southline",
     socials: {
-      instagram: "#",
-      x: "#",
+      facebook: "https://www.facebook.com/profile.php?id=61588519263961",
     },
-    streaming: {
-      spotify: "#",
-      appleMusic: "#",
-      soundcloud: "#",
-    },
+    streaming: {},
   },
   {
     name: "Sorin",
@@ -100,13 +82,11 @@ export const artists: Artist[] = [
     location: "Toronto, CA",
     featuredReleaseSlug: "paper-rooms",
     socials: {
-      instagram: "#",
-      youtube: "#",
+      facebook: "https://www.facebook.com/profile.php?id=100093674563775",
     },
     streaming: {
-      spotify: "#",
-      appleMusic: "#",
-      bandcamp: "#",
+      spotify:
+        "https://open.spotify.com/artist/7zMSTt81tfp8KK9MZTCeSP?si=YYZ4Ya_kTAiRis0QTrT-lw",
     },
   },
   {
@@ -120,16 +100,8 @@ export const artists: Artist[] = [
     vibe: "Experimental rap / abstract lyric form / underground sound design",
     location: "Berlin, DE",
     featuredReleaseSlug: "friction-language",
-    socials: {
-      instagram: "#",
-      x: "#",
-      youtube: "#",
-    },
-    streaming: {
-      spotify: "#",
-      soundcloud: "#",
-      bandcamp: "#",
-    },
+    socials: {},
+    streaming: {},
   },
   {
     name: "Turkz",
@@ -141,15 +113,8 @@ export const artists: Artist[] = [
     vibe: "Heavy-hitting rap / gritty delivery / live-first intensity",
     location: "Atlanta, GA",
     featuredReleaseSlug: "iron-season",
-    socials: {
-      instagram: "#",
-      x: "#",
-      youtube: "#",
-    },
-    streaming: {
-      spotify: "#",
-      appleMusic: "#",
-    },
+    socials: {},
+    streaming: {},
   },
 ];
 

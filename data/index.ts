@@ -7,3 +7,4 @@ export * from "./news";
 export * from "./events";
 export * from "./merch";
 export * from "./navigation";
+export * from "./label";

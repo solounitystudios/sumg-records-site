@@ -11,8 +11,9 @@ export const producers: Producer[] = [
       "NightWire builds records from atmosphere first. His sessions lean into shadowed harmony, tuned percussion, and patient movement, giving vocalists space while still driving momentum.",
     sonicIdentity: "Noir boom-bap, ambient synthesis, sub-heavy motion",
     links: {
-      instagram: "#",
-      x: "#",
+      facebook: "https://www.facebook.com/profile.php?id=61560046763388",
+      instagram:
+        "https://www.instagram.com/nightwire.sumg?igsh=bnNjejZpOXRzc3Jn&utm_source=qr",
     },
   },
   {
@@ -24,9 +25,6 @@ export const producers: Producer[] = [
     fullBio:
       "Ironlight's work is about force with control. Distorted textures, precise drum programming, and aggressive transitions create a sonic profile that stays sharp without becoming cluttered.",
     sonicIdentity: "Industrial rap textures, heavy transients, stark contrast",
-    links: {
-      instagram: "#",
-      youtube: "#",
-    },
+    links: {},
   },
 ];

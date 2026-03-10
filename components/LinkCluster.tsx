@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { SocialLinks, StreamingLinks } from "@/data/types";
 import { toDisplayLabel } from "@/lib/text";
 
@@ -8,7 +7,7 @@ interface LinkClusterProps {
 }
 
 export default function LinkCluster({ title, links }: LinkClusterProps) {
-  const entries = Object.entries(links).filter(([, value]) => Boolean(value));
+  const entries = Object.entries(links).filter(([, value]) => Boolean(value && value !== "#"));
 
   if (entries.length === 0) {
     return null;
@@ -19,22 +18,15 @@ export default function LinkCluster({ title, links }: LinkClusterProps) {
       <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-400 mb-3">{title}</p>
       <div className="flex flex-wrap gap-3">
         {entries.map(([label, href]) => (
-          href && href !== "#" ? (
-            <Link
-              key={label}
-              href={href}
-              className="text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-3 py-2 hover:border-neutral-900 transition-colors duration-200"
-            >
-              {toDisplayLabel(label)}
-            </Link>
-          ) : (
-            <span
-              key={label}
-              className="text-[11px] uppercase tracking-[0.2em] border border-neutral-800/20 px-3 py-2 text-neutral-500"
-            >
-              {toDisplayLabel(label)}
-            </span>
-          )
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-3 py-2 hover:border-neutral-900 transition-colors duration-200"
+          >
+            {toDisplayLabel(label)}
+          </a>
         ))}
       </div>
     </div>

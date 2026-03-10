@@ -4,6 +4,7 @@ export interface LinkItem {
 }
 
 export interface SocialLinks {
+  facebook?: string;
   instagram?: string;
   x?: string;
   youtube?: string;
@@ -99,4 +100,10 @@ export interface MerchItem {
   shortDescription: string;
   price: string;
   availability: string;
+}
+
+export interface LabelProfile {
+  name: string;
+  shortStatement: string;
+  socials: SocialLinks;
 }

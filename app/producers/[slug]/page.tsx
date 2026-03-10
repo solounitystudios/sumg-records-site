@@ -35,6 +35,10 @@ export default async function ProducerDetailPage({ params }: ProducerPageProps) 
     notFound();
   }
 
+  const producerLinks = Object.values(producer.links ?? {}).filter(
+    (value) => Boolean(value && value !== "#"),
+  );
+
   return (
     <>
       <PageIntro
@@ -57,9 +61,11 @@ export default async function ProducerDetailPage({ params }: ProducerPageProps) 
               {producer.sonicIdentity}
             </p>
             <p className="mt-6 text-base text-neutral-700 leading-relaxed">{producer.fullBio}</p>
-            <div className="mt-10">
-              <LinkCluster title="Links" links={producer.links ?? {}} />
-            </div>
+            {producerLinks.length > 0 && (
+              <div className="mt-10">
+                <LinkCluster title="Links" links={producer.links ?? {}} />
+              </div>
+            )}
           </div>
         </div>
       </section>

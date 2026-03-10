@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { footerUtilityLinks, navLinks } from "@/data/navigation";
-
-const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "YouTube", href: "#" },
-  { label: "Spotify", href: "#" },
-];
+import { labelProfile } from "@/data/label";
+import { toDisplayLabel } from "@/lib/text";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -16,13 +12,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr_1fr] gap-10 pb-10 border-b border-neutral-800/70">
           <div>
             <p className="text-[11px] tracking-[0.28em] uppercase font-medium">
-              SUMG Records
+              {labelProfile.name}
             </p>
             <p className="text-[10px] tracking-[0.22em] uppercase text-neutral-500 mt-1.5">
               Solounity Music Group
             </p>
             <p className="mt-5 text-sm text-neutral-400 leading-relaxed max-w-sm">
-              Record label, creative studio, and future-facing cultural platform.
+              {labelProfile.shortStatement}
             </p>
           </div>
 
@@ -43,14 +39,16 @@ export default function Footer() {
               Follow
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              {socialLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
+              {Object.entries(labelProfile.socials).map(([platform, href]) => (
+                <a
+                  key={platform}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="text-[10px] uppercase tracking-[0.2em] border border-neutral-800 px-3 py-2 text-neutral-400 hover:text-white hover:border-neutral-500 transition-colors duration-200"
                 >
-                  {link.label}
-                </Link>
+                  {toDisplayLabel(platform)}
+                </a>
               ))}
             </div>
             <p className="mt-6 text-xs text-neutral-500">

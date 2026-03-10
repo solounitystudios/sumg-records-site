@@ -1,4 +1,6 @@
 import PageIntro from "@/components/PageIntro";
+import { labelProfile } from "@/data";
+import { toDisplayLabel } from "@/lib/text";
 
 const sections = [
   {
@@ -71,6 +73,19 @@ export default function AboutPage() {
             <p className="text-[1.75rem] md:text-[2.5rem] font-display italic font-normal text-white leading-[1.1] tracking-[-0.01em]">
               Independent by choice. Built with intent.
             </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {Object.entries(labelProfile.socials).map(([platform, href]) => (
+                <a
+                  key={platform}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-[10px] uppercase tracking-[0.2em] border border-neutral-700 px-3 py-2 text-neutral-300 hover:border-neutral-400 hover:text-white"
+                >
+                  {toDisplayLabel(platform)}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
