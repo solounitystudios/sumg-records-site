@@ -10,7 +10,7 @@ export default function NewsletterBlock() {
             Stay close to new releases, visuals, and drops.
           </h2>
           <p className="mt-4 text-sm text-neutral-400 leading-relaxed">
-            Placeholder signup form. Replace with your newsletter provider before launch.
+            Mailing list capture is wired as a placeholder. Connect your provider before launch.
           </p>
           <form className="mt-8 flex flex-col sm:flex-row gap-3" action="#">
             <input

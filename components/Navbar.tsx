@@ -25,6 +25,9 @@ export default function Navbar() {
     });
   }, [open]);
 
+  const isActive = (href: string) =>
+    pathname === href || (pathname.startsWith(`${href}/`) && href !== "/");
+
   return (
     <header className="sticky top-0 z-50 bg-[#0f1012]/90 backdrop-blur border-b border-neutral-700/40">
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
@@ -43,7 +46,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={`text-[11px] tracking-[0.2em] uppercase transition-colors duration-200 ${
-                pathname === link.href
+                isActive(link.href)
                   ? "text-white"
                   : "text-neutral-400 hover:text-neutral-100"
               }`}
@@ -87,7 +90,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setOpen(false)}
               className={`text-[11px] tracking-[0.2em] uppercase transition-colors duration-200 ${
-                pathname === link.href
+                isActive(link.href)
                   ? "text-white"
                   : "text-neutral-400 hover:text-neutral-100"
               }`}

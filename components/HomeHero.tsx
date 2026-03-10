@@ -14,6 +14,7 @@ export default function HomeHero() {
   useGSAP(
     () => {
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const narrowViewport = window.innerWidth < 900;
       if (reducedMotion) {
         return;
       }
@@ -31,7 +32,7 @@ export default function HomeHero() {
       );
 
       const sceneLayer = rootRef.current?.querySelector(".hero-scene-layer");
-      if (!sceneLayer) {
+      if (!sceneLayer || narrowViewport) {
         return;
       }
 
@@ -69,8 +70,8 @@ export default function HomeHero() {
           SUMG Records
         </h1>
         <p className="hero-reveal mt-7 max-w-md text-sm md:text-base leading-relaxed text-neutral-300">
-          A record label and creative ecosystem shaping music, visuals, and
-          fashion into one living universe.
+          A modern label platform connecting records, visuals, producers, and
+          fashion partnerships into one coherent world.
         </p>
 
         <div className="hero-reveal mt-10 flex flex-wrap items-center gap-4">
@@ -85,6 +86,26 @@ export default function HomeHero() {
             className="inline-flex items-center text-[11px] tracking-[0.22em] uppercase text-neutral-300 hover:text-white transition-colors duration-200"
           >
             Explore roster →
+          </Link>
+        </div>
+        <div className="hero-reveal mt-7 flex flex-wrap items-center gap-5">
+          <Link
+            href="/ecosystem"
+            className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 hover:text-neutral-200"
+          >
+            Ecosystem
+          </Link>
+          <Link
+            href="/news"
+            className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 hover:text-neutral-200"
+          >
+            Journal
+          </Link>
+          <Link
+            href="/videos"
+            className="text-[10px] tracking-[0.2em] uppercase text-neutral-500 hover:text-neutral-200"
+          >
+            Visuals
           </Link>
         </div>
       </div>

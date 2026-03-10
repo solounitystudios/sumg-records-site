@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import PageIntro from "@/components/PageIntro";
 import { news } from "@/data";
 import { formatDate } from "@/lib/format";
+import { toDisplayLabel } from "@/lib/text";
 
 interface NewsDetailProps {
   params: Promise<{ slug: string }>;
@@ -36,7 +37,7 @@ export default async function NewsDetailPage({ params }: NewsDetailProps) {
   return (
     <>
       <PageIntro
-        eyebrow={`${article.category} · ${formatDate(article.date)}`}
+        eyebrow={`${toDisplayLabel(article.category)} · ${formatDate(article.date)}`}
         title={article.title}
         description={article.excerpt}
       />

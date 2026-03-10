@@ -40,7 +40,7 @@ export default function EcosystemPage() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <Reveal>
             <h2 className="text-3xl md:text-5xl font-light tracking-tight leading-[1.02] max-w-3xl">
-              SUMG functions as a label and a cultural operating system.
+              SUMG operates as a label and a connected creative framework.
             </h2>
             <p className="mt-6 text-sm md:text-base text-neutral-300 leading-relaxed max-w-2xl">
               Music remains central, but each project extends into visuals, garments, and

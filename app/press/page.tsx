@@ -17,9 +17,9 @@ export default function PressPage() {
             <SectionHeading eyebrow="Media Kit" title="Downloads" />
             <div className="space-y-4">
               {[
-                "SUMG logo pack (placeholder)",
-                "Brand one-sheet (placeholder)",
-                "Latest release press photos (placeholder)",
+                "SUMG logo pack — /press-assets/logos (placeholder)",
+                "Brand one-sheet — /press-assets/brand-sheet (placeholder)",
+                "Release stills — /press-assets/release-stills (placeholder)",
               ].map((item) => (
                 <div key={item} className="border border-neutral-800/20 p-4 bg-white">
                   <p className="text-sm text-neutral-700">{item}</p>
@@ -27,7 +27,8 @@ export default function PressPage() {
               ))}
             </div>
             <p className="mt-6 text-sm text-neutral-500 leading-relaxed">
-              Editorial usage: Keep artwork unaltered and credit SUMG Records where applicable.
+              Editorial usage: keep artwork unaltered, preserve clear space around logos, and
+              credit SUMG Records in captions or metadata.
             </p>
           </div>
 

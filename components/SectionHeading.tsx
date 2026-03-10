@@ -62,6 +62,17 @@ export default function SectionHeading({
           {description}
         </p>
       )}
+
+      {linkHref && linkLabel && (
+        <Link
+          href={linkHref}
+          className={`md:hidden mt-5 inline-flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-neutral-500 hover:text-neutral-900 ${
+            isCenter ? "justify-center" : ""
+          }`}
+        >
+          {linkLabel} →
+        </Link>
+      )}
     </div>
   );
 }

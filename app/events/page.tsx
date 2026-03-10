@@ -2,6 +2,7 @@ import PageIntro from "@/components/PageIntro";
 import SectionHeading from "@/components/SectionHeading";
 import { events } from "@/data";
 import { formatDate } from "@/lib/format";
+import { toDisplayLabel } from "@/lib/text";
 
 export default function EventsPage() {
   return (
@@ -32,7 +33,7 @@ export default function EventsPage() {
                     </p>
                   </div>
                   <p className="text-[10px] uppercase tracking-[0.24em] text-neutral-700 border border-neutral-800/20 px-3 py-2">
-                    {event.ticketStatus}
+                    {toDisplayLabel(event.ticketStatus)}
                   </p>
                 </article>
               ))}

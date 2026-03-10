@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { toDisplayLabel } from "@/lib/text";
 
 interface NewsCardProps {
   title: string;
@@ -19,7 +20,7 @@ export default function NewsCard({
     <article className="border-t border-neutral-800/20 pt-6 pb-8 group hover:border-neutral-900 transition-colors duration-300">
       <Link href={href}>
         <p className="text-[10px] uppercase tracking-[0.26em] text-neutral-400">
-          {category} · {date}
+          {toDisplayLabel(category)} · {date}
         </p>
         <h3 className="mt-3 text-xl font-light tracking-tight text-neutral-900">
           {title}

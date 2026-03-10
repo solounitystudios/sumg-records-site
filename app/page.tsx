@@ -8,6 +8,7 @@ import ReleaseCard from "@/components/ReleaseCard";
 import NewsCard from "@/components/NewsCard";
 import NewsletterBlock from "@/components/NewsletterBlock";
 import Reveal from "@/components/Reveal";
+import MediaTile from "@/components/MediaTile";
 import {
   artists,
   brands,
@@ -21,6 +22,7 @@ import {
   videos,
 } from "@/data";
 import { formatDate } from "@/lib/format";
+import { toDisplayLabel } from "@/lib/text";
 
 export default function HomePage() {
   const featuredArtists = artists.filter((artist) =>
@@ -30,6 +32,7 @@ export default function HomePage() {
   const featuredVideo = videos[0];
   const latestNews = news.slice(0, 3);
   const merchPreview = merchItems.slice(0, 4);
+  const upcomingEvents = events.slice(0, 2);
 
   return (
     <>
@@ -116,12 +119,25 @@ export default function HomePage() {
             <p className="text-[10px] tracking-[0.35em] uppercase text-neutral-600 mb-5">
               Latest visual
             </p>
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
-              {featuredVideo.title}
-            </h2>
-            <p className="mt-4 text-sm text-neutral-400 max-w-xl leading-relaxed">
-              {featuredVideo.description}
-            </p>
+            {featuredVideo ? (
+              <>
+                <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
+                  {featuredVideo.title}
+                </h2>
+                <p className="mt-4 text-sm text-neutral-400 max-w-xl leading-relaxed">
+                  {featuredVideo.description}
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
+                  Visual programming in progress
+                </h2>
+                <p className="mt-4 text-sm text-neutral-400 max-w-xl leading-relaxed">
+                  New videos and sessions will be published as releases roll out.
+                </p>
+              </>
+            )}
           </div>
           <Link
             href="/videos"
@@ -160,16 +176,24 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Merch drop"
             title="SUMG × PersonaWorks"
+            description="Previewed pieces from current and upcoming capsule runs."
             linkHref="/merch"
             linkLabel="All merch"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {merchPreview.map((item) => (
-              <article key={item.slug} className="border-t border-neutral-800/20 pt-5">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-neutral-400">
-                  {item.category}
+              <article key={item.slug} className="group border-t border-neutral-800/20 pt-5">
+                <MediaTile
+                  src={item.image}
+                  alt={item.name}
+                  label={item.name}
+                  className="aspect-[3/4]"
+                  sizes="(max-width: 1024px) 50vw, 24vw"
+                />
+                <p className="mt-4 text-[10px] uppercase tracking-[0.22em] text-neutral-400">
+                  {toDisplayLabel(item.category)}
                 </p>
-                <h3 className="mt-3 text-lg tracking-tight text-neutral-900">{item.name}</h3>
+                <h3 className="mt-2 text-lg tracking-tight text-neutral-900">{item.name}</h3>
                 <p className="mt-2 text-sm text-neutral-500">{item.shortDescription}</p>
                 <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-neutral-700">
                   {item.price} · {item.availability}
@@ -177,6 +201,29 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#0f1012] text-white py-20 md:py-24 border-t border-black">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row gap-10 md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-[10px] tracking-[0.35em] uppercase text-neutral-600 mb-5">
+              Universe
+            </p>
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
+              One platform, multiple disciplines.
+            </h2>
+            <p className="mt-4 text-sm text-neutral-400 leading-relaxed">
+              SUMG links artists, producers, fashion labels, and creative direction into a
+              unified release ecosystem.
+            </p>
+          </div>
+          <Link
+            href="/ecosystem"
+            className="inline-flex text-[11px] tracking-[0.2em] uppercase border border-neutral-700 px-7 py-4 text-neutral-300 hover:border-white hover:text-white"
+          >
+            Explore ecosystem →
+          </Link>
         </div>
       </section>
 
@@ -190,15 +237,21 @@ export default function HomePage() {
               linkLabel="All updates"
             />
             <div className="space-y-2">
-              {latestNews.map((item) => (
-                <NewsCard
-                  key={item.slug}
-                  title={item.title}
-                  date={formatDate(item.date)}
-                  category={item.category}
-                  excerpt={item.excerpt}
-                />
-              ))}
+              {latestNews.length > 0 ? (
+                latestNews.map((item) => (
+                  <NewsCard
+                    key={item.slug}
+                    title={item.title}
+                    date={formatDate(item.date)}
+                    category={item.category}
+                    excerpt={item.excerpt}
+                  />
+                ))
+              ) : (
+                <article className="border border-neutral-800/15 p-7 bg-white">
+                  <p className="text-sm text-neutral-600">No journal entries have been posted yet.</p>
+                </article>
+              )}
             </div>
           </div>
           <div>
@@ -210,21 +263,27 @@ export default function HomePage() {
               linkLabel="View events"
             />
             <div className="space-y-4">
-              {events.map((event) => (
-                <article
-                  key={event.slug}
-                  className="border-t border-neutral-800/20 pt-5 pb-6"
-                >
-                  <p className="text-[10px] uppercase tracking-[0.24em] text-neutral-400">
-                    {formatDate(event.date)} · {event.location}
-                  </p>
-                  <h3 className="mt-3 text-xl tracking-tight">{event.title}</h3>
-                  <p className="mt-2 text-sm text-neutral-500">{event.description}</p>
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-neutral-700">
-                    {event.ticketStatus}
-                  </p>
+              {upcomingEvents.length > 0 ? (
+                upcomingEvents.map((event) => (
+                  <article
+                    key={event.slug}
+                    className="border-t border-neutral-800/20 pt-5 pb-6"
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.24em] text-neutral-400">
+                      {formatDate(event.date)} · {event.location}
+                    </p>
+                    <h3 className="mt-3 text-xl tracking-tight">{event.title}</h3>
+                    <p className="mt-2 text-sm text-neutral-500">{event.description}</p>
+                    <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-neutral-700">
+                      {toDisplayLabel(event.ticketStatus)}
+                    </p>
+                  </article>
+                ))
+              ) : (
+                <article className="border border-neutral-800/15 p-7 bg-white">
+                  <p className="text-sm text-neutral-600">Programming will be announced soon.</p>
                 </article>
-              ))}
+              )}
             </div>
           </div>
         </div>
