@@ -32,7 +32,7 @@ export default function SectionHeading({
               {eyebrow}
             </p>
           )}
-          <h2 className="text-3xl md:text-4xl font-light tracking-tight text-black leading-[1.08]">
+          <h2 className="text-3xl md:text-4xl font-light tracking-tight text-neutral-900 leading-[1.08]">
             {title}
           </h2>
         </div>
@@ -40,7 +40,7 @@ export default function SectionHeading({
         {linkHref && linkLabel && (
           <Link
             href={linkHref}
-            className="hidden md:inline-flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-neutral-400 hover:text-black transition-colors duration-200 shrink-0"
+            className="hidden md:inline-flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase text-neutral-400 hover:text-neutral-900 transition-colors duration-200 shrink-0"
           >
             {linkLabel} →
           </Link>
@@ -48,7 +48,7 @@ export default function SectionHeading({
       </div>
 
       <div
-        className={`mt-5 border-t border-neutral-200 ${
+        className={`mt-5 border-t border-neutral-800/20 ${
           isCenter ? "mx-auto w-12" : "w-10"
         }`}
       />

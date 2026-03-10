@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "SUMG Records — Solounity Music Group",
   description:
-    "Independent music label exploring artists, identity, and AI-powered creative ecosystems.",
+    "Official site of SOLOUNITY Music Group (SUMG Records): artists, releases, videos, merch, and ecosystem.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased bg-[#f4f4f1]">
         <Navbar />
         <main>{children}</main>
         <Footer />
