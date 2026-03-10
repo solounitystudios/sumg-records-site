@@ -9,7 +9,7 @@ import { toDisplayLabel } from "@/lib/text";
 const storefrontFooterLinks = [
   { label: "Hub", href: "/merch" },
   { label: "Woronoff", href: "/merch/woronoff" },
-  { label: "Unity Supply", href: "/merch/unity-supply" },
+  { label: "Unity Standard", href: "/merch/unity-standard" },
   { label: "Moon Spell", href: "/merch/moon-spell" },
   { label: "Concrete Borough", href: "/merch/concrete-borough" },
   { label: "Salt Current", href: "/merch/salt-current" },

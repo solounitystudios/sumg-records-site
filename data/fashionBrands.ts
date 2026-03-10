@@ -47,14 +47,14 @@ export const fashionBrands: StorefrontBrand[] = [
     commerceEnabled: true,
   },
   {
-    name: "Unity Supply",
-    slug: "unity-supply",
-    logo: "/storefront/logos/unity-supply.svg",
-    logoWordmark: "UNITY SUPPLY",
-    shortDescription: "Minimal systemwear and everyday street essentials.",
+    name: "Unity Standard",
+    slug: "unity-standard",
+    logo: "/storefront/logos/unity-standard.svg",
+    logoWordmark: "UNITY STANDARD",
+    shortDescription: "Performance minimal essentials engineered for daily movement.",
     fullDescription:
-      "Unity Supply builds modular essentials for daily rotation. The catalog prioritizes neutral palettes, utility detailing, and disciplined fit architecture for repeat wear.",
-    heroImage: "/storefront/unity-supply-hero.jpg",
+      "Unity Standard builds disciplined performance basics with clean utility detailing, structured fit architecture, and modern street function.",
+    heroImage: "/storefront/unity-standard-hero.jpg",
     theme: {
       background: "#ece7dc",
       surface: "#f5f1e8",
