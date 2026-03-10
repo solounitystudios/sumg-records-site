@@ -5,6 +5,6 @@ export * from "./releases";
 export * from "./videos";
 export * from "./news";
 export * from "./events";
-export * from "./merch";
+export * from "./storefront";
 export * from "./navigation";
 export * from "./label";

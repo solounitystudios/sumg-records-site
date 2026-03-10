@@ -20,8 +20,8 @@ const pillars = [
     href: "/brands",
   },
   {
-    title: "PersonaWorks",
-    body: "Creative engine behind visuals, campaigns, editorial concepts, and worldbuilding.",
+    title: "Storefront Labels",
+    body: "Standalone fashion businesses with independent brand language, catalogs, and commerce flows.",
     href: "/merch",
   },
 ];

@@ -10,6 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
+  const inMerchStorefront = pathname.startsWith("/merch");
 
   useEffect(() => {
     if (!panelRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -32,12 +33,25 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[#0f1012]/90 backdrop-blur border-b border-neutral-700/40">
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
         <Link href="/" onClick={() => setOpen(false)} className="group flex flex-col leading-none">
-          <span className="text-[11px] tracking-[0.28em] uppercase font-medium text-white group-hover:opacity-75 transition-opacity duration-200">
-            SUMG
-          </span>
-          <span className="text-[9px] tracking-[0.28em] uppercase text-neutral-500 group-hover:opacity-70 transition-opacity duration-200">
-            Records
-          </span>
+          {inMerchStorefront ? (
+            <>
+              <span className="text-[11px] tracking-[0.28em] uppercase font-medium text-white group-hover:opacity-75 transition-opacity duration-200">
+                Storefronts
+              </span>
+              <span className="text-[9px] tracking-[0.28em] uppercase text-neutral-500 group-hover:opacity-70 transition-opacity duration-200">
+                Fashion
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="text-[11px] tracking-[0.28em] uppercase font-medium text-white group-hover:opacity-75 transition-opacity duration-200">
+                SUMG
+              </span>
+              <span className="text-[9px] tracking-[0.28em] uppercase text-neutral-500 group-hover:opacity-70 transition-opacity duration-200">
+                Records
+              </span>
+            </>
+          )}
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-10">

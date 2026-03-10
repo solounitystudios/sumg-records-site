@@ -97,14 +97,60 @@ export interface EventItem {
   ticketStatus: "tickets soon" | "on sale" | "sold out";
 }
 
-export interface MerchItem {
+export interface StorefrontTheme {
+  background: string;
+  surface: string;
+  text: string;
+  mutedText: string;
+  accent: string;
+  border: string;
+  heroOverlay: string;
+  typography: "sculptural" | "romantic" | "system" | "industrial" | "coastal";
+}
+
+export interface StorefrontCollection {
+  slug: string;
+  name: string;
+  description: string;
+}
+
+export interface StorefrontBrand {
   name: string;
   slug: string;
-  category: "tees" | "hoodies" | "accessories" | "limited drops";
-  image: string;
+  logoWordmark: string;
   shortDescription: string;
-  price: string;
-  availability: string;
+  fullDescription: string;
+  theme: StorefrontTheme;
+  heroImage: string;
+  collections: StorefrontCollection[];
+}
+
+export interface StorefrontProduct {
+  brandSlug: string;
+  name: string;
+  slug: string;
+  price: number;
+  currency: "USD";
+  category: string;
+  collection: string;
+  colors: string[];
+  sizes: string[];
+  images: string[];
+  description: string;
+  inStock: boolean;
+}
+
+export interface CartLineItem {
+  lineId: string;
+  brandSlug: string;
+  productSlug: string;
+  name: string;
+  unitPrice: number;
+  currency: "USD";
+  color: string;
+  size: string;
+  image?: string;
+  quantity: number;
 }
 
 export interface LabelProfile {

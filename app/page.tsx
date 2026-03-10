@@ -15,10 +15,10 @@ import {
   events,
   featuredArtistSlugs,
   featuredReleaseSlug,
-  merchItems,
   news,
   producers,
   releases,
+  storefrontBrands,
   videos,
 } from "@/data";
 import { formatDate } from "@/lib/format";
@@ -32,7 +32,7 @@ export default function HomePage() {
   const featuredRelease = releases.find((release) => release.slug === featuredReleaseSlug);
   const featuredVideo = getResolvedVideos(videos)[0];
   const latestNews = news.slice(0, 3);
-  const merchPreview = merchItems.slice(0, 4);
+  const merchPreview = storefrontBrands.slice(0, 4);
   const upcomingEvents = events.slice(0, 2);
 
   return (
@@ -176,29 +176,29 @@ export default function HomePage() {
       <section className="bg-white py-24 md:py-32 border-t border-neutral-800/10">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <SectionHeading
-            eyebrow="Merch drop"
-            title="SUMG × PersonaWorks"
-            description="Previewed pieces from current and upcoming capsule runs."
+            eyebrow="Storefronts"
+            title="Fashion Brands"
+            description="Enter independent storefronts for apparel, outerwear, and accessories."
             linkHref="/merch"
-            linkLabel="All merch"
+            linkLabel="Open merch hub"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {merchPreview.map((item) => (
-              <article key={item.slug} className="group border-t border-neutral-800/20 pt-5">
+            {merchPreview.map((brand) => (
+              <article key={brand.slug} className="group border-t border-neutral-800/20 pt-5">
                 <MediaTile
-                  src={item.image}
-                  alt={item.name}
-                  label={item.name}
+                  src={brand.heroImage}
+                  alt={brand.name}
+                  label={brand.name}
                   className="aspect-[3/4]"
                   sizes="(max-width: 1024px) 50vw, 24vw"
                 />
                 <p className="mt-4 text-[10px] uppercase tracking-[0.22em] text-neutral-400">
-                  {toDisplayLabel(item.category)}
+                  {brand.collections.length} Collections
                 </p>
-                <h3 className="mt-2 text-lg tracking-tight text-neutral-900">{item.name}</h3>
-                <p className="mt-2 text-sm text-neutral-500">{item.shortDescription}</p>
+                <h3 className="mt-2 text-lg tracking-tight text-neutral-900">{brand.name}</h3>
+                <p className="mt-2 text-sm text-neutral-500">{brand.shortDescription}</p>
                 <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-neutral-700">
-                  {item.price} · {item.availability}
+                  <Link href={`/merch/${brand.slug}`}>Enter storefront →</Link>
                 </p>
               </article>
             ))}
