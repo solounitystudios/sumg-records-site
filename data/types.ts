@@ -71,7 +71,7 @@ export interface VideoItem {
   type: "music video" | "visual" | "live session" | "teaser";
   releaseDate: string;
   thumbnail: string;
-  embedUrl?: string;
+  sumgYouTubeId?: string;
   description: string;
 }
 

@@ -1,5 +1,6 @@
 import type { VideoItem } from "./types";
 
+// Add `sumgYouTubeId` only for official SUMG YouTube uploads.
 export const videos: VideoItem[] = [
   {
     title: "Zyson — Glass Hour (Official Visual)",
@@ -8,7 +9,6 @@ export const videos: VideoItem[] = [
     type: "music video",
     releaseDate: "2026-02-16",
     thumbnail: "/video-assets/glass-hour-visual.jpg",
-    embedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     description:
       "A nocturnal visual built around fragmented memory and architectural light.",
   },
