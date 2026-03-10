@@ -2,25 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { footerUtilityLinks, navLinks } from "@/data/navigation";
+import { footerUtilityLinks, navLinks, storefrontNavLinks } from "@/data/navigation";
 import { labelProfile } from "@/data/label";
 import { toDisplayLabel } from "@/lib/text";
-
-const storefrontFooterLinks = [
-  { label: "Hub", href: "/merch" },
-  { label: "Woronoff", href: "/merch/woronoff" },
-  { label: "Unity Standard", href: "/merch/unity-standard" },
-  { label: "Moon Spell", href: "/merch/moon-spell" },
-  { label: "Concrete Borough", href: "/merch/concrete-borough" },
-  { label: "Salt Current", href: "/merch/salt-current" },
-  { label: "Cart", href: "/merch/cart" },
-] as const;
 
 export default function Footer() {
   const pathname = usePathname();
   const year = new Date().getFullYear();
   const inMerchStorefront = pathname.startsWith("/merch");
-  const footerLinks = inMerchStorefront ? storefrontFooterLinks : [...navLinks, ...footerUtilityLinks];
+  const footerLinks = inMerchStorefront ? storefrontNavLinks : [...navLinks, ...footerUtilityLinks];
 
   return (
     <footer className="bg-[#090a0b] text-white border-t border-neutral-800/40">

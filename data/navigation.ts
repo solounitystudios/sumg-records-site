@@ -17,3 +17,13 @@ export const footerUtilityLinks: LinkItem[] = [
   { label: "Press", href: "/press" },
   { label: "Ecosystem", href: "/ecosystem" },
 ];
+
+export const storefrontNavLinks: LinkItem[] = [
+  { label: "Hub", href: "/merch" },
+  { label: "Woronoff", href: "/merch/woronoff" },
+  { label: "Unity Standard", href: "/merch/unity-standard" },
+  { label: "Moon Spell", href: "/merch/moon-spell" },
+  { label: "Concrete Borough", href: "/merch/concrete-borough" },
+  { label: "Salt Current", href: "/merch/salt-current" },
+  { label: "Cart", href: "/merch/cart" },
+];

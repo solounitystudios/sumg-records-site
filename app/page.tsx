@@ -13,7 +13,6 @@ import {
   artists,
   brands,
   events,
-  fashionBrands,
   featuredArtistSlugs,
   featuredReleaseSlug,
   news,
@@ -22,6 +21,7 @@ import {
   videos,
 } from "@/data";
 import { formatDate } from "@/lib/format";
+import { getStorefrontBrands } from "@/lib/storefront";
 import { getResolvedVideos } from "@/lib/videos";
 import { toDisplayLabel } from "@/lib/text";
 
@@ -32,7 +32,7 @@ export default function HomePage() {
   const featuredRelease = releases.find((release) => release.slug === featuredReleaseSlug);
   const featuredVideo = getResolvedVideos(videos)[0];
   const latestNews = news.slice(0, 3);
-  const merchPreview = fashionBrands.slice(0, 5);
+  const merchPreview = getStorefrontBrands().slice(0, 5);
   const upcomingEvents = events.slice(0, 2);
 
   return (

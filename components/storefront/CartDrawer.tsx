@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { formatCurrency, toCheckoutLineInputs } from "@/lib/commerce";
+import { formatCurrency } from "@/lib/commerce";
 import { useStorefrontCart } from "@/components/storefront/CartProvider";
+import { useCheckout } from "@/components/storefront/useCheckout";
 
 export default function CartDrawer() {
   const {
@@ -16,39 +16,7 @@ export default function CartDrawer() {
     clearCart,
     itemCount,
   } = useStorefrontCart();
-  const [checkoutMessage, setCheckoutMessage] = useState("");
-  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
-
-  const handleCheckout = async () => {
-    if (lines.length === 0) {
-      return;
-    }
-
-    setIsCheckoutLoading(true);
-    setCheckoutMessage("");
-    try {
-      const response = await fetch("/api/shopify/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          lines: toCheckoutLineInputs(lines),
-        }),
-      });
-      const payload = (await response.json()) as { checkoutUrl?: string; error?: string };
-      if (!response.ok || !payload.checkoutUrl) {
-        setCheckoutMessage(payload.error ?? "Checkout is unavailable.");
-        return;
-      }
-
-      window.location.href = payload.checkoutUrl;
-    } catch {
-      setCheckoutMessage("Checkout is unavailable.");
-    } finally {
-      setIsCheckoutLoading(false);
-    }
-  };
+  const { handleCheckout, checkoutMessage, isCheckoutLoading } = useCheckout(lines);
 
   return (
     <>

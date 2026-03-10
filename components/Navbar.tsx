@@ -4,17 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { navLinks } from "@/data/navigation";
-
-const storefrontNavLinks = [
-  { label: "Hub", href: "/merch" },
-  { label: "Woronoff", href: "/merch/woronoff" },
-  { label: "Unity Standard", href: "/merch/unity-standard" },
-  { label: "Moon Spell", href: "/merch/moon-spell" },
-  { label: "Concrete Borough", href: "/merch/concrete-borough" },
-  { label: "Salt Current", href: "/merch/salt-current" },
-  { label: "Cart", href: "/merch/cart" },
-] as const;
+import { navLinks, storefrontNavLinks } from "@/data/navigation";
 
 export default function Navbar() {
   const pathname = usePathname();

@@ -39,7 +39,7 @@ function createLineId(product: StorefrontProduct, color: string, size: string) {
   return `${product.brandSlug}:${product.slug}:${color}:${size}`;
 }
 
-function readStoredCart() {
+function readStoredCart(): CartLineItem[] {
   if (typeof window === "undefined") {
     return [];
   }
@@ -58,12 +58,19 @@ function readStoredCart() {
 }
 
 export default function StorefrontCartProvider({ children }: { children: React.ReactNode }) {
-  const [lines, setLines] = useState<CartLineItem[]>(() => readStoredCart());
+  const [lines, setLines] = useState<CartLineItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const hasHydrated = useRef(typeof window !== "undefined");
+  const hasHydrated = useRef(false);
 
   useEffect(() => {
-    if (!hasHydrated.current || typeof window === "undefined") {
+    const stored = readStoredCart();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLines(stored);
+    hasHydrated.current = true;
+  }, []);
+
+  useEffect(() => {
+    if (!hasHydrated.current) {
       return;
     }
 
