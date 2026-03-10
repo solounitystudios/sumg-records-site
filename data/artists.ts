@@ -67,7 +67,6 @@ export const artists: Artist[] = [
   {
     name: "Marrick",
     slug: "marrick",
-    image: "/artists/marrick.png",
     shortDescription:
       "Raw street narratives delivered with sharp rhythm and direct energy.",
     fullBio:
@@ -89,7 +88,6 @@ export const artists: Artist[] = [
   {
     name: "Sorin",
     slug: "sorin",
-    image: "/artists/sorin.png",
     shortDescription:
       "Introspective songwriting rooted in minimalism and emotional clarity.",
     fullBio:

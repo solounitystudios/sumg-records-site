@@ -23,7 +23,7 @@ export interface StreamingLinks {
 export interface Artist {
   name: string;
   slug: string;
-  image: string;
+  image?: string;
   shortDescription: string;
   fullBio: string;
   vibe: string;

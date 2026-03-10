@@ -4,7 +4,7 @@ import MediaTile from "@/components/MediaTile";
 interface ArtistCardProps {
   name: string;
   descriptor: string;
-  image: string;
+  image?: string;
   href: string;
 }
 

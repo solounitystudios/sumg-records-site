@@ -28,21 +28,53 @@ export default function MediaTile({
   priority = false,
   sizes = "(max-width: 768px) 100vw, 33vw",
 }: MediaTileProps) {
-  const [failed, setFailed] = useState(false);
+  const [loadModeBySrc, setLoadModeBySrc] = useState<
+    Record<string, "optimized" | "unoptimized" | "failed">
+  >({});
   const fallbackInitials = useMemo(() => initialsFromLabel(label), [label]);
-  const shouldShowImage = Boolean(src) && !failed;
+  const currentLoadMode = src ? (loadModeBySrc[src] ?? "optimized") : "failed";
+  const shouldShowImage = Boolean(src) && currentLoadMode !== "failed";
+
+  const handleImageError = () => {
+    if (!src) {
+      return;
+    }
+
+    setLoadModeBySrc((previous) => {
+      const current = previous[src] ?? "optimized";
+
+      if (current === "optimized") {
+        // Retry once without optimization for files that fail in the optimizer pipeline.
+        return {
+          ...previous,
+          [src]: "unoptimized",
+        };
+      }
+
+      if (current === "unoptimized") {
+        return {
+          ...previous,
+          [src]: "failed",
+        };
+      }
+
+      return previous;
+    });
+  };
 
   return (
     <div className={`relative overflow-hidden bg-neutral-900 ${className}`}>
       {shouldShowImage ? (
         <Image
+          key={`${src}-${currentLoadMode}`}
           src={src!}
           alt={alt}
           fill
           priority={priority}
           sizes={sizes}
+          unoptimized={currentLoadMode === "unoptimized"}
           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-          onError={() => setFailed(true)}
+          onError={handleImageError}
         />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-neutral-400 flex flex-col items-center justify-center gap-3">
