@@ -6,10 +6,21 @@ import { footerUtilityLinks, navLinks } from "@/data/navigation";
 import { labelProfile } from "@/data/label";
 import { toDisplayLabel } from "@/lib/text";
 
+const storefrontFooterLinks = [
+  { label: "Hub", href: "/merch" },
+  { label: "Woronoff", href: "/merch/woronoff" },
+  { label: "Unity Supply", href: "/merch/unity-supply" },
+  { label: "Moon Spell", href: "/merch/moon-spell" },
+  { label: "Concrete Borough", href: "/merch/concrete-borough" },
+  { label: "Salt Current", href: "/merch/salt-current" },
+  { label: "Cart", href: "/merch/cart" },
+] as const;
+
 export default function Footer() {
   const pathname = usePathname();
   const year = new Date().getFullYear();
   const inMerchStorefront = pathname.startsWith("/merch");
+  const footerLinks = inMerchStorefront ? storefrontFooterLinks : [...navLinks, ...footerUtilityLinks];
 
   return (
     <footer className="bg-[#090a0b] text-white border-t border-neutral-800/40">
@@ -30,7 +41,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-7 gap-y-3 content-start">
-            {[...navLinks, ...footerUtilityLinks].map((link) => (
+            {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

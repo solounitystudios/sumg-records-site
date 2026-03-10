@@ -50,11 +50,19 @@ export default function MerchPage() {
                   <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-400">
                     {brand.logoWordmark}
                   </p>
+                  {brand.secondaryMark && (
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.25em] text-neutral-500">
+                      {brand.secondaryMark}
+                    </p>
+                  )}
                   <h2 className="mt-4 text-3xl font-light tracking-tight text-neutral-900 group-hover:opacity-85 transition-opacity">
                     {brand.name}
                   </h2>
                   <p className="mt-3 text-sm text-neutral-500 leading-relaxed">
                     {brand.shortDescription}
+                  </p>
+                  <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-neutral-500">
+                    {brand.positioning}
                   </p>
                   <div className="mt-5 flex items-center justify-between">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-neutral-400">

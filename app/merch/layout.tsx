@@ -6,7 +6,7 @@ import StorefrontTopBar from "@/components/storefront/StorefrontTopBar";
 export const metadata: Metadata = {
   title: "Merch Storefronts",
   description:
-    "Standalone fashion storefronts for Woronoff, Moon Spell, Unity Standard, Concrete Borough, and Salt Current.",
+    "Standalone fashion storefronts for Woronoff, Unity Supply, Moon Spell, Concrete Borough, and Salt Current.",
 };
 
 export default function MerchLayout({ children }: { children: React.ReactNode }) {

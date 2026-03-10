@@ -41,8 +41,18 @@ export default function ProductCard({
           {product.description}
         </p>
         <p className="mt-4 text-[11px] uppercase tracking-[0.2em]" style={{ color: textColor }}>
+          {product.compareAtPrice && product.compareAtPrice > product.price && (
+            <span className="line-through mr-2 opacity-60">
+              {formatCurrency(product.compareAtPrice, product.currency)}
+            </span>
+          )}
           {formatCurrency(product.price, product.currency)} · {product.inStock ? "In stock" : "Sold out"}
         </p>
+        {product.featured && (
+          <p className="mt-2 text-[10px] uppercase tracking-[0.2em]" style={{ color: mutedTextColor }}>
+            Featured
+          </p>
+        )}
       </article>
     </Link>
   );

@@ -6,6 +6,16 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { navLinks } from "@/data/navigation";
 
+const storefrontNavLinks = [
+  { label: "Hub", href: "/merch" },
+  { label: "Woronoff", href: "/merch/woronoff" },
+  { label: "Unity Supply", href: "/merch/unity-supply" },
+  { label: "Moon Spell", href: "/merch/moon-spell" },
+  { label: "Concrete Borough", href: "/merch/concrete-borough" },
+  { label: "Salt Current", href: "/merch/salt-current" },
+  { label: "Cart", href: "/merch/cart" },
+] as const;
+
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -28,6 +38,7 @@ export default function Navbar() {
 
   const isActive = (href: string) =>
     pathname === href || (pathname.startsWith(`${href}/`) && href !== "/");
+  const visibleNavLinks = inMerchStorefront ? storefrontNavLinks : navLinks;
 
   return (
     <header className="sticky top-0 z-50 bg-[#0f1012]/90 backdrop-blur border-b border-neutral-700/40">
@@ -55,7 +66,7 @@ export default function Navbar() {
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
+          {visibleNavLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -98,7 +109,7 @@ export default function Navbar() {
         className="md:hidden border-t border-neutral-700/40 bg-[#0f1012] overflow-hidden h-0 opacity-0"
       >
         <nav aria-label="Mobile navigation" className="max-w-7xl mx-auto px-6 py-7 flex flex-col gap-5">
-          {navLinks.map((link) => (
+          {visibleNavLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}

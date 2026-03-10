@@ -15,8 +15,9 @@ export interface CheckoutLineInput {
 
 export function toCheckoutLineInputs(lines: CartLineItem[]): CheckoutLineInput[] {
   return lines.map((line) => ({
-    // Future Shopify mapping target: ProductVariant.id
-    merchandiseId: `${line.brandSlug}:${line.productSlug}:${line.color}:${line.size}`,
+    // Preferred: Shopify ProductVariant.id from backend catalog sync.
+    merchandiseId:
+      line.merchandiseId ?? `${line.brandSlug}:${line.productSlug}:${line.color}:${line.size}`,
     quantity: line.quantity,
   }));
 }

@@ -1,11 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { formatCurrency } from "@/lib/commerce";
+import { useState } from "react";
+import { formatCurrency, toCheckoutLineInputs } from "@/lib/commerce";
 import { useStorefrontCart } from "@/components/storefront/CartProvider";
 
 export default function CartPageClient() {
   const { lines, subtotal, removeItem, updateQuantity } = useStorefrontCart();
+  const [checkoutMessage, setCheckoutMessage] = useState("");
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    if (lines.length === 0) {
+      return;
+    }
+
+    setIsCheckoutLoading(true);
+    setCheckoutMessage("");
+    try {
+      const response = await fetch("/api/shopify/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          lines: toCheckoutLineInputs(lines),
+        }),
+      });
+      const payload = (await response.json()) as { checkoutUrl?: string; error?: string };
+      if (!response.ok || !payload.checkoutUrl) {
+        setCheckoutMessage(payload.error ?? "Checkout is currently unavailable.");
+        return;
+      }
+
+      window.location.href = payload.checkoutUrl;
+    } catch {
+      setCheckoutMessage("Checkout is currently unavailable.");
+    } finally {
+      setIsCheckoutLoading(false);
+    }
+  };
 
   if (lines.length === 0) {
     return (
@@ -83,12 +117,17 @@ export default function CartPageClient() {
             <span className="text-neutral-500">Subtotal</span>
             <span className="text-neutral-900">{formatCurrency(subtotal)}</span>
           </div>
-          <button className="mt-6 w-full border border-neutral-900 px-5 py-3 text-[11px] uppercase tracking-[0.2em] text-neutral-900">
-            Proceed to checkout
+          <button
+            onClick={handleCheckout}
+            disabled={isCheckoutLoading}
+            className="mt-6 w-full border border-neutral-900 px-5 py-3 text-[11px] uppercase tracking-[0.2em] text-neutral-900 disabled:opacity-50"
+          >
+            {isCheckoutLoading ? "Preparing checkout..." : "Proceed to checkout"}
           </button>
           <p className="mt-3 text-xs text-neutral-500">
-            Checkout API can be connected to Shopify Storefront when credentials are ready.
+            Shopify checkout handoff is available when Storefront API credentials are configured.
           </p>
+          {checkoutMessage && <p className="mt-2 text-xs text-neutral-600">{checkoutMessage}</p>}
         </aside>
       </div>
     </section>

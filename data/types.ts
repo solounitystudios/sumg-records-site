@@ -105,7 +105,8 @@ export interface StorefrontTheme {
   accent: string;
   border: string;
   heroOverlay: string;
-  typography: "sculptural" | "romantic" | "system" | "industrial" | "coastal";
+  headingTreatment: "editorial-serif" | "geometric-sans" | "gothic-serif" | "industrial-sans" | "airy-serif";
+  bodyTreatment: "modern-sans" | "utility-sans" | "minimal-sans" | "grotesk-sans" | "relaxed-sans";
 }
 
 export interface StorefrontCollection {
@@ -117,33 +118,49 @@ export interface StorefrontCollection {
 export interface StorefrontBrand {
   name: string;
   slug: string;
+  logo: string;
   logoWordmark: string;
+  secondaryMark?: string;
   shortDescription: string;
   fullDescription: string;
   theme: StorefrontTheme;
   heroImage: string;
   collections: StorefrontCollection[];
+  categories: FashionCategory[];
+  visualDirection: string;
+  positioning: string;
+  productMood: string;
+  campaignTone: string;
+  commerceEnabled: boolean;
 }
+
+export type FashionCategory = "tops" | "outerwear" | "bottoms" | "accessories" | "lifestyle";
 
 export interface StorefrontProduct {
   brandSlug: string;
   name: string;
   slug: string;
   price: number;
+  compareAtPrice?: number;
   currency: "USD";
-  category: string;
+  category: FashionCategory;
   collection: string;
   colors: string[];
   sizes: string[];
   images: string[];
   description: string;
+  details: string[];
+  materials: string[];
   inStock: boolean;
+  featured: boolean;
+  tags: string[];
 }
 
 export interface CartLineItem {
   lineId: string;
   brandSlug: string;
   productSlug: string;
+  merchandiseId?: string;
   name: string;
   unitPrice: number;
   currency: "USD";

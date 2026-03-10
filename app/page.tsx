@@ -13,12 +13,12 @@ import {
   artists,
   brands,
   events,
+  fashionBrands,
   featuredArtistSlugs,
   featuredReleaseSlug,
   news,
   producers,
   releases,
-  storefrontBrands,
   videos,
 } from "@/data";
 import { formatDate } from "@/lib/format";
@@ -32,7 +32,7 @@ export default function HomePage() {
   const featuredRelease = releases.find((release) => release.slug === featuredReleaseSlug);
   const featuredVideo = getResolvedVideos(videos)[0];
   const latestNews = news.slice(0, 3);
-  const merchPreview = storefrontBrands.slice(0, 4);
+  const merchPreview = fashionBrands.slice(0, 5);
   const upcomingEvents = events.slice(0, 2);
 
   return (
@@ -182,7 +182,7 @@ export default function HomePage() {
             linkHref="/merch"
             linkLabel="Open merch hub"
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {merchPreview.map((brand) => (
               <article key={brand.slug} className="group border-t border-neutral-800/20 pt-5">
                 <MediaTile
