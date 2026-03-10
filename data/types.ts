@@ -47,10 +47,43 @@ export interface Producer {
 export interface Brand {
   name: string;
   slug: string;
-  image?: string;
   shortDescription: string;
   fullDescription: string;
-  positioning: string;
+  visualDirection: string;
+  aestheticDirection: string;
+  heroImage: string;
+  theme: {
+    colors: {
+      background: string;
+      surface: string;
+      text: string;
+      accent: string;
+      muted: string;
+    };
+    typography: {
+      display: string;
+      body: string;
+      accent: string;
+    };
+    hero: {
+      animation:
+        | "smoke-reveal"
+        | "lunar-haze"
+        | "grid-shift"
+        | "gritty-texture"
+        | "tidal-drift";
+    };
+  };
+  collection: Array<{
+    name: string;
+    category: string;
+    shortDescription: string;
+    image: string;
+  }>;
+  campaignImagery: Array<{
+    image: string;
+    caption: string;
+  }>;
 }
 
 export interface Release {

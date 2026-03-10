@@ -162,7 +162,8 @@ export default function HomePage() {
                 <BrandCard
                   name={brand.name}
                   description={brand.shortDescription}
-                  image={brand.image}
+                  image={brand.heroImage}
+                  accentColor={brand.theme.colors.accent}
                   href={`/brands/${brand.slug}`}
                 />
               </Reveal>

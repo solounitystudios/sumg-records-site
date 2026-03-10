@@ -4,7 +4,8 @@ import MediaTile from "@/components/MediaTile";
 interface BrandCardProps {
   name: string;
   description: string;
-  image?: string;
+  image: string;
+  accentColor?: string;
   href: string;
 }
 
@@ -12,10 +13,14 @@ export default function BrandCard({
   name,
   description,
   image,
+  accentColor,
   href,
 }: BrandCardProps) {
   return (
-    <article className="group border-t border-neutral-800/20 hover:border-neutral-900 transition-colors duration-300 pt-7 pb-9 flex flex-col gap-4">
+    <article
+      className="group border-t border-neutral-800/20 hover:border-neutral-900 transition-colors duration-300 pt-7 pb-9 flex flex-col gap-4"
+      style={accentColor ? { borderColor: `${accentColor}50` } : undefined}
+    >
       <Link href={href}>
         <MediaTile
           src={image}
