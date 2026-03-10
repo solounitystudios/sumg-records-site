@@ -10,6 +10,7 @@ interface MediaTileProps {
   className?: string;
   priority?: boolean;
   sizes?: string;
+  fallbackVariant?: "default" | "restrained";
 }
 
 function initialsFromLabel(label: string) {
@@ -27,6 +28,7 @@ export default function MediaTile({
   className = "",
   priority = false,
   sizes = "(max-width: 768px) 100vw, 33vw",
+  fallbackVariant = "default",
 }: MediaTileProps) {
   const [loadModeBySrc, setLoadModeBySrc] = useState<
     Record<string, "optimized" | "unoptimized" | "failed">
@@ -76,6 +78,15 @@ export default function MediaTile({
           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           onError={handleImageError}
         />
+      ) : fallbackVariant === "restrained" ? (
+        <div className="absolute inset-0 bg-neutral-900 text-neutral-500 flex flex-col items-center justify-center px-6 text-center">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-600">
+            {fallbackInitials}
+          </span>
+          <span className="mt-2 text-[9px] uppercase tracking-[0.2em] text-neutral-600">
+            Image unavailable
+          </span>
+        </div>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 text-neutral-400 flex flex-col items-center justify-center gap-3">
           <span className="text-xl tracking-[0.25em] uppercase">{fallbackInitials}</span>

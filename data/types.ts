@@ -64,15 +64,19 @@ export interface Release {
   streaming: StreamingLinks;
 }
 
+export type VideoOwnerType = "artist" | "producer" | "label";
+
 export interface VideoItem {
   title: string;
   slug: string;
-  artist: string;
-  type: "music video" | "visual" | "live session" | "teaser";
-  releaseDate: string;
-  thumbnail: string;
-  embedUrl?: string;
-  description: string;
+  artistSlug?: string;
+  producerSlug?: string;
+  ownerType?: VideoOwnerType;
+  youtubeId?: string;
+  youtubeUrl?: string;
+  date: string;
+  thumbnail?: string;
+  description?: string;
 }
 
 export interface NewsItem {
@@ -93,14 +97,77 @@ export interface EventItem {
   ticketStatus: "tickets soon" | "on sale" | "sold out";
 }
 
-export interface MerchItem {
+export interface StorefrontTheme {
+  background: string;
+  surface: string;
+  text: string;
+  mutedText: string;
+  accent: string;
+  border: string;
+  heroOverlay: string;
+  headingTreatment: "editorial-serif" | "geometric-sans" | "gothic-serif" | "industrial-sans" | "airy-serif";
+  bodyTreatment: "modern-sans" | "utility-sans" | "minimal-sans" | "grotesk-sans" | "relaxed-sans";
+}
+
+export interface StorefrontCollection {
+  slug: string;
+  name: string;
+  description: string;
+}
+
+export interface StorefrontBrand {
   name: string;
   slug: string;
-  category: "tees" | "hoodies" | "accessories" | "limited drops";
-  image: string;
+  logo: string;
+  logoWordmark: string;
+  secondaryMark?: string;
   shortDescription: string;
-  price: string;
-  availability: string;
+  fullDescription: string;
+  theme: StorefrontTheme;
+  heroImage: string;
+  collections: StorefrontCollection[];
+  categories: FashionCategory[];
+  visualDirection: string;
+  positioning: string;
+  productMood: string;
+  campaignTone: string;
+  commerceEnabled: boolean;
+}
+
+export type FashionCategory = "tops" | "outerwear" | "bottoms" | "accessories" | "lifestyle";
+
+export interface StorefrontProduct {
+  brandSlug: string;
+  name: string;
+  slug: string;
+  price: number;
+  compareAtPrice?: number;
+  currency: "USD";
+  category: FashionCategory;
+  collection: string;
+  colors: string[];
+  sizes: string[];
+  images: string[];
+  description: string;
+  details: string[];
+  materials: string[];
+  inStock: boolean;
+  featured: boolean;
+  tags: string[];
+}
+
+export interface CartLineItem {
+  lineId: string;
+  brandSlug: string;
+  productSlug: string;
+  merchandiseId?: string;
+  name: string;
+  unitPrice: number;
+  currency: "USD";
+  color: string;
+  size: string;
+  image?: string;
+  quantity: number;
 }
 
 export interface LabelProfile {
