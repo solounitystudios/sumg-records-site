@@ -5,6 +5,7 @@ export const releases: Release[] = [
     title: "Glass Hour",
     slug: "glass-hour",
     artist: "Zyson",
+    artistSlug: "zyson",
     cover: "/release-assets/glass-hour.jpg",
     releaseDate: "2026-02-14",
     shortDescription:
@@ -32,6 +33,7 @@ export const releases: Release[] = [
     title: "Double Bind",
     slug: "double-bind",
     artist: "Lysandra Noir",
+    artistSlug: "lysandra",
     cover: "/release-assets/double-bind.jpg",
     releaseDate: "2026-01-09",
     shortDescription:
@@ -59,6 +61,7 @@ export const releases: Release[] = [
     title: "Iron Season",
     slug: "iron-season",
     artist: "Turkz",
+    artistSlug: "turkz",
     cover: "/release-assets/iron-season.jpg",
     releaseDate: "2025-11-21",
     shortDescription:

@@ -9,6 +9,7 @@ export interface SocialLinks {
   x?: string;
   youtube?: string;
   tiktok?: string;
+  personaworks?: string;
 }
 
 export interface StreamingLinks {
@@ -56,6 +57,7 @@ export interface Release {
   title: string;
   slug: string;
   artist: string;
+  artistSlug?: string;
   cover: string;
   releaseDate: string;
   shortDescription: string;
@@ -68,6 +70,7 @@ export interface VideoItem {
   title: string;
   slug: string;
   artist: string;
+  artistSlug?: string;
   type: "music video" | "visual" | "live session" | "teaser";
   releaseDate: string;
   thumbnail: string;

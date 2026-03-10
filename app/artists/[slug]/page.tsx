@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ArtistProfileSections from "@/components/ArtistProfileSections";
 import MediaTile from "@/components/MediaTile";
 import PageIntro from "@/components/PageIntro";
-import ReleaseCard from "@/components/ReleaseCard";
-import { artists, releases } from "@/data";
-import { formatDate } from "@/lib/format";
+import { artists, releases, videos } from "@/data";
 import { toSpotifyArtistEmbedUrl } from "@/lib/spotify";
 
 interface ArtistPageProps {
@@ -44,9 +43,15 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
     notFound();
   }
 
-  const featuredRelease = releases.find(
-    (release) => release.slug === artist.featuredReleaseSlug,
+  const artistReleases = releases.filter(
+    (release) => release.artistSlug === artist.slug,
   );
+  const artistVideos = videos.filter(
+    (video) => video.artistSlug === artist.slug && Boolean(video.embedUrl),
+  );
+  const relatedArtists = artists
+    .filter((entry) => entry.slug !== artist.slug)
+    .slice(0, 4);
   const spotifyUrl =
     artist.streaming.spotify && artist.streaming.spotify !== "#"
       ? artist.streaming.spotify
@@ -61,6 +66,10 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
   const followLinks = followPlatformOrder
     .map(([key, label]) => ({ label, href: artist.socials[key] }))
     .filter((entry) => Boolean(entry.href && entry.href !== "#"));
+  const personaworksUrl =
+    artist.socials.personaworks && artist.socials.personaworks !== "#"
+      ? artist.socials.personaworks
+      : undefined;
   const hasListenSection = Boolean(spotifyUrl || appleUrl);
   const spotifyEmbedUrl = toSpotifyArtistEmbedUrl(spotifyUrl);
 
@@ -121,7 +130,7 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
               </div>
             )}
 
-            {followLinks.length > 0 && (
+            {(followLinks.length > 0 || personaworksUrl) && (
               <div className="mt-8 border-t border-neutral-800/15 pt-6">
                 <p className="text-[10px] uppercase tracking-[0.26em] text-neutral-400 mb-4">
                   Follow
@@ -138,6 +147,16 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
                       {entry.label}
                     </a>
                   ))}
+                  {personaworksUrl && (
+                    <a
+                      href={personaworksUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] border border-neutral-800/25 px-4 py-2.5 hover:border-neutral-900 transition-colors duration-200"
+                    >
+                      PersonaWorks
+                    </a>
+                  )}
                 </div>
               </div>
             )}
@@ -164,23 +183,11 @@ export default async function ArtistDetailPage({ params }: ArtistPageProps) {
         </section>
       )}
 
-      {featuredRelease && (
-        <section className="bg-white py-20 md:py-24 border-t border-neutral-800/10">
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-400 mb-5">
-              Featured release
-            </p>
-            <ReleaseCard
-              title={featuredRelease.title}
-              artist={featuredRelease.artist}
-              date={formatDate(featuredRelease.releaseDate)}
-              description={featuredRelease.shortDescription}
-              image={featuredRelease.cover}
-              href={`/releases/${featuredRelease.slug}`}
-            />
-          </div>
-        </section>
-      )}
+      <ArtistProfileSections
+        releases={artistReleases}
+        videos={artistVideos}
+        relatedArtists={relatedArtists}
+      />
 
       <section className="bg-[#f7f7f5] py-16 border-t border-neutral-800/10">
         <div className="max-w-7xl mx-auto px-6 md:px-10">

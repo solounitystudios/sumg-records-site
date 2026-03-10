@@ -41,7 +41,7 @@ export default function MediaTile({
           fill
           priority={priority}
           sizes={sizes}
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           onError={() => setFailed(true)}
         />
       ) : (
