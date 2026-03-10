@@ -245,6 +245,7 @@ export default function HomePage() {
                     date={formatDate(item.date)}
                     category={item.category}
                     excerpt={item.excerpt}
+                    href={`/news/${item.slug}`}
                   />
                 ))
               ) : (

@@ -12,15 +12,17 @@ export default function Navbar() {
   const panelRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!panelRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!panelRef.current) {
       return;
     }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     gsap.killTweensOf(panelRef.current);
     gsap.to(panelRef.current, {
       height: open ? "auto" : 0,
       opacity: open ? 1 : 0,
-      duration: 0.25,
+      duration: prefersReducedMotion ? 0 : 0.25,
       ease: "power2.out",
     });
   }, [open]);
