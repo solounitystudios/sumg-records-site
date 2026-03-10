@@ -64,15 +64,19 @@ export interface Release {
   streaming: StreamingLinks;
 }
 
+export type VideoOwnerType = "artist" | "producer" | "label";
+
 export interface VideoItem {
   title: string;
   slug: string;
-  artist: string;
-  type: "music video" | "visual" | "live session" | "teaser";
-  releaseDate: string;
-  thumbnail: string;
-  sumgYouTubeId?: string;
-  description: string;
+  artistSlug?: string;
+  producerSlug?: string;
+  ownerType?: VideoOwnerType;
+  youtubeId?: string;
+  youtubeUrl?: string;
+  date: string;
+  thumbnail?: string;
+  description?: string;
 }
 
 export interface NewsItem {

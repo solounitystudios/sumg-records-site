@@ -22,6 +22,7 @@ import {
   videos,
 } from "@/data";
 import { formatDate } from "@/lib/format";
+import { getResolvedVideos } from "@/lib/videos";
 import { toDisplayLabel } from "@/lib/text";
 
 export default function HomePage() {
@@ -29,7 +30,7 @@ export default function HomePage() {
     featuredArtistSlugs.includes(artist.slug),
   );
   const featuredRelease = releases.find((release) => release.slug === featuredReleaseSlug);
-  const featuredVideo = videos[0];
+  const featuredVideo = getResolvedVideos(videos)[0];
   const latestNews = news.slice(0, 3);
   const merchPreview = merchItems.slice(0, 4);
   const upcomingEvents = events.slice(0, 2);
@@ -125,7 +126,8 @@ export default function HomePage() {
                   {featuredVideo.title}
                 </h2>
                 <p className="mt-4 text-sm text-neutral-400 max-w-xl leading-relaxed">
-                  {featuredVideo.description}
+                  {featuredVideo.description ??
+                    "Music videos, live sessions, and teasers from across the SUMG ecosystem."}
                 </p>
               </>
             ) : (
